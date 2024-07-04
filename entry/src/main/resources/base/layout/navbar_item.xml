@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="0vp"
+    ohos:weight="1"
+    ohos:orientation="vertical"
+    ohos:alignment="center">
+    <Image
+        ohos:id="$+id:navbar_item_icon"
+        ohos:height="22vp"
+        ohos:width="22vp"
+        ohos:scale_mode="zoom_center" />
+    <Text
+        ohos:id="$+id:navbar_item_text"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:top_margin="4vp"
+        ohos:text_size="12vp"
+        ohos:text_alignment="center" />
+</DirectionalLayout>

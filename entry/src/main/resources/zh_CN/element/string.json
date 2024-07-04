@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "信息学部权益墙"
+    },
+    {
+      "name": "app_description",
+      "value": "信息学部权益墙"
+    },
+    {
+      "name": "nav_announcements",
+      "value": "公告"
+    },
+    {
+      "name": "nav_question",
+      "value": "反馈"
+    },
+    {
+      "name": "nav_answers",
+      "value": "答复"
+    },
+    {
+      "name": "nav_profile",
+      "value": "我的"
+    }
+  ]
+}

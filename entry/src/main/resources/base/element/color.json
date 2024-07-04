@@ -1,0 +1,16 @@
+{
+  "color": [
+    {
+      "name": "brand",
+      "value": "#0096c3"
+    },
+    {
+      "name": "navbar_inactive",
+      "value": "#323233"
+    },
+    {
+      "name": "navbar_active",
+      "value": "#0096c3"
+    }
+  ]
+}

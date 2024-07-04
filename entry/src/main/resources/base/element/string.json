@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "FIT Appeal"
+    },
+    {
+      "name": "app_description",
+      "value": "FIT Appeal"
+    },
+    {
+      "name": "nav_announcements",
+      "value": "Announcements"
+    },
+    {
+      "name": "nav_question",
+      "value": "Feedback"
+    },
+    {
+      "name": "nav_answers",
+      "value": "Answers"
+    },
+    {
+      "name": "nav_profile",
+      "value": "Mine"
+    }
+  ]
+}
