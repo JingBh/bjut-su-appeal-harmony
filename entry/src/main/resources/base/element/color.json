@@ -11,6 +11,14 @@
     {
       "name": "navbar_active",
       "value": "#0096c3"
+    },
+    {
+      "name": "gray_900",
+      "value": "#111827"
+    },
+    {
+      "name": "neutral_100",
+      "value": "#f5f5f5"
     }
   ]
 }

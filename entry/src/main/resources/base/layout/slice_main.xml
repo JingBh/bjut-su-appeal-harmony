@@ -10,7 +10,7 @@
         ohos:height="0vp"
         ohos:width="match_parent"
         ohos:weight="1"
-        ohos:background_element="#f3f4f6"
+        ohos:background_element="$color:neutral_100"
         ohos:text_alignment="center" />
 
     <DirectionalLayout
