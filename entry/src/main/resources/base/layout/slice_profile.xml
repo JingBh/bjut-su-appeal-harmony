@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:top_padding="24vp"
+    ohos:bottom_padding="24vp"
+    ohos:start_padding="16vp"
+    ohos:end_padding="16vp"
+    ohos:background_element="$color:neutral_100">
+
+    <!-- Cell Group 1: Profile -->
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical"
+        ohos:background_element="$graphic:shape_cell_group">
+
+        <!-- Cell 1: Profile -->
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center"
+            ohos:top_padding="12vp"
+            ohos:bottom_padding="12vp"
+            ohos:start_padding="16vp"
+            ohos:end_padding="16vp">
+
+            <Image
+                ohos:id="$+id:profile_avatar"
+                ohos:width="56vp"
+                ohos:height="56vp"
+                ohos:image_src="$media:avatar_placeholder"
+                ohos:scale_mode="zoom_center"
+                ohos:start_margin="0vp"
+                ohos:end_margin="12vp" />
+
+            <DirectionalLayout
+                ohos:height="match_parent"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:orientation="vertical"
+                ohos:alignment="start|vertical_center">
+
+                <Text
+                    ohos:id="$+id:profile_name"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"
+                    ohos:text_size="16vp"
+                    ohos:text_color="$color:vant_cell_text_color" />
+
+                <Text
+                    ohos:id="$+id:profile_uid"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"
+                    ohos:text_size="14vp"
+                    ohos:text_color="$color:vant_cell_label_color" />
+
+            </DirectionalLayout>
+
+        </DirectionalLayout>
+        <!-- End Cell 1 -->
+
+        <Component
+            ohos:height="0.5vp"
+            ohos:width="match_parent"
+            ohos:start_margin="16vp"
+            ohos:end_margin="16vp"
+            ohos:background_element="$color:vant_cell_border_color" />
+
+        <!-- Cell 2: Login -->
+        <DirectionalLayout
+            ohos:id="$+id:profile_login"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center"
+            ohos:background_element="$graphic:container_cell_clickable"
+            ohos:top_padding="10vp"
+            ohos:bottom_padding="10vp"
+            ohos:start_padding="16vp"
+            ohos:end_padding="16vp"
+            ohos:clickable="true">
+
+            <Image
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="0vp"
+                ohos:end_margin="4vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_box_arrow_in_right" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:text="$string:profile_login"
+                ohos:text_size="14vp"
+                ohos:text_color="$color:vant_cell_text_color" />
+
+            <Image
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="4vp"
+                ohos:end_margin="0vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_chevron_right_nav" />
+
+        </DirectionalLayout>
+        <!-- End Cell 2 -->
+
+        <!-- Cell 3: Logout -->
+        <DirectionalLayout
+            ohos:id="$+id:profile_logout"
+            ohos:visibility="hide"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center"
+            ohos:background_element="$graphic:container_cell_clickable"
+            ohos:top_padding="10vp"
+            ohos:bottom_padding="10vp"
+            ohos:start_padding="16vp"
+            ohos:end_padding="16vp"
+            ohos:clickable="true">
+
+            <Image
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="0vp"
+                ohos:end_margin="4vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_box_arrow_left" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:text="$string:profile_logout"
+                ohos:text_size="14vp"
+                ohos:text_color="$color:vant_cell_text_color" />
+
+            <Image
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="4vp"
+                ohos:end_margin="0vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_chevron_right_nav" />
+
+        </DirectionalLayout>
+        <!-- End Cell 3 -->
+
+    </DirectionalLayout>
+    <!-- End Cell Group 1 -->
+
+    <!-- Cell Group 2: Mine -->
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical"
+        ohos:background_element="$graphic:shape_cell_group"
+        ohos:top_margin="24vp">
+
+        <!-- Cell 1: My Feedbacks -->
+        <DirectionalLayout
+            ohos:id="$+id:profile_feedbacks"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center"
+            ohos:background_element="$graphic:container_cell_clickable"
+            ohos:top_padding="10vp"
+            ohos:bottom_padding="10vp"
+            ohos:start_padding="16vp"
+            ohos:end_padding="16vp"
+            ohos:clickable="false">
+
+            <Image
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="0vp"
+                ohos:end_margin="4vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_clock_history" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:text="$string:profile_feedbacks"
+                ohos:text_size="14vp"
+                ohos:text_color="$color:vant_cell_text_color" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:text="$string:profile_requires_login"
+                ohos:text_size="14vp"
+                ohos:text_color="$color:vant_cell_label_color" />
+
+            <Image
+                ohos:visibility="hide"
+                ohos:height="16vp"
+                ohos:width="16vp"
+                ohos:start_margin="4vp"
+                ohos:end_margin="0vp"
+                ohos:scale_mode="zoom_center"
+                ohos:image_src="$graphic:bi_chevron_right_nav" />
+
+        </DirectionalLayout>
+        <!-- End Cell 1 -->
+
+    </DirectionalLayout>
+    <!-- End Cell Group 2 -->
+
+    <!--<Component
+        ohos:height="0vp"
+        ohos:width="match_parent"
+        ohos:weight="1" />-->
+
+    <!-- Cell Group 3: About -->
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal"
+        ohos:top_padding="12vp"
+        ohos:bottom_padding="12vp"
+        ohos:start_padding="16vp"
+        ohos:end_padding="16vp"
+        ohos:top_margin="24vp"
+        ohos:alignment="vertical_center"
+        ohos:background_element="$graphic:shape_cell_group">
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="0vp"
+            ohos:weight="1"
+            ohos:orientation="vertical"
+            ohos:start_margin="0vp"
+            ohos:end_margin="16vp">
+
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="horizontal"
+                ohos:alignment="vertical_center">
+
+                <Image
+                    ohos:height="16vp"
+                    ohos:width="16vp"
+                    ohos:start_margin="0vp"
+                    ohos:end_margin="4vp"
+                    ohos:scale_mode="zoom_center"
+                    ohos:image_src="$graphic:bi_info_circle" />
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="0vp"
+                    ohos:weight="1"
+                    ohos:text="$string:profile_about"
+                    ohos:text_size="14vp"
+                    ohos:text_color="$color:vant_cell_label_color" />
+
+            </DirectionalLayout>
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:text="$string:app_name"
+                ohos:text_size="16vp"
+                ohos:text_weight="500"
+                ohos:text_color="$color:vant_cell_text_color"
+                ohos:top_margin="8vp" />
+
+            <Text
+                ohos:id="$+id:profile_version_app"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:text="$string:profile_version_app"
+                ohos:text_size="12vp"
+                ohos:text_color="$color:vant_cell_label_color"
+                ohos:top_margin="4vp" />
+
+            <Text
+                ohos:id="$+id:profile_version_service"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:text="$string:profile_version_service"
+                ohos:text_size="12vp"
+                ohos:text_color="$color:vant_cell_label_color"
+                ohos:top_margin="4vp" />
+
+        </DirectionalLayout>
+
+        <Image
+            ohos:height="81vp"
+            ohos:width="128vp"
+            ohos:scale_mode="zoom_center"
+            ohos:image_src="$media:logo_vertical" />
+
+    </DirectionalLayout>
+    <!-- End Cell Group 3 -->
+
+</DirectionalLayout>

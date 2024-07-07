@@ -14,7 +14,7 @@ public class MainAnnouncementsFraction extends Fraction {
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         Component component = scatter.parse(ResourceTable.Layout_slice_placeholder, container, false);
 
-        Text text = (Text) component.findComponentById(ResourceTable.Id_placeholder_text);
+        Text text = component.findComponentById(ResourceTable.Id_placeholder_text);
         text.setText(ResourceTable.String_nav_announcements);
 
         return component;

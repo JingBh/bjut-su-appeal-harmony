@@ -23,6 +23,102 @@
     {
       "name": "nav_profile",
       "value": "我的"
+    },
+    {
+      "name": "profile_anonymous",
+      "value": "匿名用户"
+    },
+    {
+      "name": "profile_login",
+      "value": "登录"
+    },
+    {
+      "name": "profile_logout",
+      "value": "退出登录"
+    },
+    {
+      "name": "profile_feedbacks",
+      "value": "我的历史反馈"
+    },
+    {
+      "name": "profile_requires_login",
+      "value": "登录后可查看"
+    },
+    {
+      "name": "profile_about",
+      "value": "关于"
+    },
+    {
+      "name": "profile_version_app",
+      "value": "应用版本："
+    },
+    {
+      "name": "profile_version_service",
+      "value": "服务版本："
+    },
+    {
+      "name": "profile_version_loading",
+      "value": "获取中..."
+    },
+    {
+      "name": "profile_version_load_failed",
+      "value": "获取失败"
+    },
+    {
+      "name": "login_cas",
+      "value": "统一身份认证登录"
+    },
+    {
+      "name": "login_username",
+      "value": "账号"
+    },
+    {
+      "name": "login_username_placeholder",
+      "value": "请输入账号"
+    },
+    {
+      "name": "login_password",
+      "value": "密码"
+    },
+    {
+      "name": "login_password_placeholder",
+      "value": "请输入密码"
+    },
+    {
+      "name": "login_button",
+      "value": "登录"
+    },
+    {
+      "name": "login_button_loading",
+      "value": "加载中..."
+    },
+    {
+      "name": "login_success",
+      "value": "登录成功"
+    },
+    {
+      "name": "login_fail_required",
+      "value": "请先输入账号和密码"
+    },
+    {
+      "name": "login_fail_network",
+      "value": "登录失败，请检查设备的网络连接"
+    },
+    {
+      "name": "login_fail_401",
+      "value": "登录失败，请检查输入的账号和密码是否有误"
+    },
+    {
+      "name": "login_fail_429",
+      "value": "请求过于频繁，请稍后再试"
+    },
+    {
+      "name": "login_fail",
+      "value": "登录失败，请稍后再试"
+    },
+    {
+      "name": "login_hint",
+      "value": "您输入的密码仅用于向统一认证服务发送请求以验证身份，不会以任何形式保存，请放心使用。"
     }
   ]
 }

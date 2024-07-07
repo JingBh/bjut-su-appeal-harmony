@@ -8,18 +8,15 @@ import ohos.agp.components.Text;
 import ohos.agp.components.element.Element;
 import ohos.agp.components.element.VectorElement;
 import ohos.agp.utils.Color;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 import tech.bjut.appeal.ResourceTable;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import tech.bjut.appeal.ui.ability.MainAbility;
 import tech.bjut.appeal.ui.util.NavbarItem;
 
 import java.util.stream.IntStream;
 
 public class MainSlice extends AbilitySlice {
-
-    static final HiLogLabel LABEL = new HiLogLabel(HiLog.LOG_APP, 0, "MainAbility");
 
     int activeNav = 3;
 
@@ -28,17 +25,13 @@ public class MainSlice extends AbilitySlice {
         super.onStart(intent);
         this.setUIContent(ResourceTable.Layout_slice_main);
 
-        initNavbar();
-    }
-
-    private void initNavbar() {
-        ComponentContainer navbar = (ComponentContainer) this.findComponentById(ResourceTable.Id_main_navbar);
+        ComponentContainer navbar = this.findComponentById(ResourceTable.Id_main_navbar);
         IntStream.range(0, NavbarItem.ITEMS.length).forEachOrdered(i -> {
             final NavbarItem item = NavbarItem.ITEMS[i];
 
             ComponentContainer container = (ComponentContainer) LayoutScatter.getInstance(this)
                 .parse(ResourceTable.Layout_component_navbar_item, navbar, false);
-            Text text = (Text) container.findComponentById(ResourceTable.Id_navbar_item_text);
+            Text text = container.findComponentById(ResourceTable.Id_navbar_item_text);
             text.setText(item.getTextId());
             updateNavItem(i, container, i == activeNav);
 
@@ -56,23 +49,24 @@ public class MainSlice extends AbilitySlice {
         updateFraction();
     }
 
+    @Override
+    protected void onActive() {
+        MainAbility ability = (MainAbility) this.getAbility();
+        ability.setCurrentSlice(this);
+    }
+
     private void updateNavItem(int index, boolean active) {
-        ComponentContainer navbar = (ComponentContainer) this.findComponentById(ResourceTable.Id_main_navbar);
+        ComponentContainer navbar = this.findComponentById(ResourceTable.Id_main_navbar);
         ComponentContainer container = (ComponentContainer) navbar.getComponentAt(index);
         updateNavItem(index, container, active);
     }
 
     private void updateNavItem(int index, ComponentContainer container, boolean active) {
-        Color activeColor = Color.BLUE, inactiveColor = Color.BLACK;
-        try {
-            activeColor = new Color(this.getResourceManager().getElement(ResourceTable.Color_navbar_active).getColor());
-            inactiveColor = new Color(this.getResourceManager().getElement(ResourceTable.Color_navbar_inactive).getColor());
-        } catch (Exception e) {
-            HiLog.error(LABEL, "updateNavItem: %s", HiLog.getStackTrace(e));
-        }
+        final Color activeColor = new Color(this.getColor(ResourceTable.Color_navbar_active));
+        final Color inactiveColor = new Color(this.getColor(ResourceTable.Color_navbar_inactive));
 
-        Image icon = (Image) container.findComponentById(ResourceTable.Id_navbar_item_icon);
-        Text text = (Text) container.findComponentById(ResourceTable.Id_navbar_item_text);
+        Image icon = container.findComponentById(ResourceTable.Id_navbar_item_icon);
+        Text text = container.findComponentById(ResourceTable.Id_navbar_item_text);
 
         Element iconElement = new VectorElement(
             this.getContext(),

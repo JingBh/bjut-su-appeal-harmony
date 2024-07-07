@@ -23,6 +23,102 @@
     {
       "name": "nav_profile",
       "value": "Mine"
+    },
+    {
+      "name": "profile_anonymous",
+      "value": "Anonymous User"
+    },
+    {
+      "name": "profile_login",
+      "value": "Login"
+    },
+    {
+      "name": "profile_logout",
+      "value": "Logout"
+    },
+    {
+      "name": "profile_feedbacks",
+      "value": "My Feedbacks"
+    },
+    {
+      "name": "profile_requires_login",
+      "value": "Login to view"
+    },
+    {
+      "name": "profile_about",
+      "value": "About"
+    },
+    {
+      "name": "profile_version_app",
+      "value": "App Version: "
+    },
+    {
+      "name": "profile_version_service",
+      "value": "Service Version: "
+    },
+    {
+      "name": "profile_version_loading",
+      "value": "Loading..."
+    },
+    {
+      "name": "profile_version_load_failed",
+      "value": "Failed to load"
+    },
+    {
+      "name": "login_cas",
+      "value": "Unified Identity Authentication"
+    },
+    {
+      "name": "login_username",
+      "value": "Username"
+    },
+    {
+      "name": "login_username_placeholder",
+      "value": "Please input username"
+    },
+    {
+      "name": "login_password",
+      "value": "Password"
+    },
+    {
+      "name": "login_password_placeholder",
+      "value": "Please input password"
+    },
+    {
+      "name": "login_button",
+      "value": "Login"
+    },
+    {
+      "name": "login_button_loading",
+      "value": "Loading..."
+    },
+    {
+      "name": "login_success",
+      "value": "Login successful"
+    },
+    {
+      "name": "login_fail_required",
+      "value": "Please input your username and password first"
+    },
+    {
+      "name": "login_fail_network",
+      "value": "Login failed, please check your network connection"
+    },
+    {
+      "name": "login_fail_401",
+      "value": "Login failed, please check your username and password"
+    },
+    {
+      "name": "login_fail_429",
+      "value": "Login attempt too frequent, please try again later"
+    },
+    {
+      "name": "login_fail",
+      "value": "Login failed, please try again later"
+    },
+    {
+      "name": "login_hint",
+      "value": "Don't worry, your username and password will only be used to send requests to the Unified Identity Authentication server for identity verification."
     }
   ]
 }
