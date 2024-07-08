@@ -10,7 +10,7 @@
         ohos:id="$+id:placeholder_text"
         ohos:height="match_content"
         ohos:width="match_content"
-        ohos:text_size="18vp"
+        ohos:text_size="18fp"
         ohos:text_alignment="center"
         ohos:text_color="$color:gray_900" />
 

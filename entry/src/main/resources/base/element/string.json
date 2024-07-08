@@ -127,6 +127,26 @@
     {
       "name": "login_hint",
       "value": "Don't worry, your username and password will only be used to send requests to the Unified Identity Authentication server for identity verification."
+    },
+    {
+      "name": "list_loading",
+      "value": "Loading more data..."
+    },
+    {
+      "name": "list_load_failed",
+      "value": "Failed to load data"
+    },
+    {
+      "name": "list_no_more",
+      "value": "No more data"
+    },
+    {
+      "name": "list_collapse",
+      "value": "Collapse"
+    },
+    {
+      "name": "list_expand",
+      "value": "Show more"
     }
   ]
 }

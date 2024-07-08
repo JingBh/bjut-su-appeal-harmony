@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:top_margin="16vp"
+    ohos:padding="16vp"
+    ohos:background_element="$graphic:shape_list_item">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:alignment="vertical_center"
+        ohos:orientation="horizontal">
+
+        <Component
+            ohos:height="20vp"
+            ohos:width="4vp"
+            ohos:start_margin="0vp"
+            ohos:end_margin="8vp"
+            ohos:background_element="$graphic:shape_mark" />
+
+        <Text
+            ohos:id="$+id:announcement_item_title"
+            ohos:height="match_content"
+            ohos:width="0vp"
+            ohos:weight="1"
+            ohos:text_size="16fp"
+            ohos:text_weight="600"
+            ohos:text_color="$color:gray_900"
+            ohos:multiple_lines="true" />
+
+        <Image
+            ohos:id="$+id:announcement_item_pinned"
+            ohos:visibility="hide"
+            ohos:height="12fp"
+            ohos:width="12fp"
+            ohos:image_src="$graphic:bi_pin_angle_fill_label"
+            ohos:scale_mode="zoom_center"
+            ohos:start_margin="8vp"
+            ohos:end_margin="0vp" />
+
+        <Text
+            ohos:id="$+id:announcement_item_date"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text_size="12fp"
+            ohos:text_color="$color:gray_500"
+            ohos:start_margin="8vp"
+            ohos:end_margin="0vp" />
+
+    </DirectionalLayout>
+
+    <Text
+        ohos:id="$+id:announcement_item_content"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:text_size="14fp"
+        ohos:line_height_num="1.2"
+        ohos:text_color="$color:gray_600"
+        ohos:multiple_lines="true"
+        ohos:top_margin="16vp" />
+
+    <DirectionalLayout
+        ohos:id="$+id:announcement_item_collapse"
+        ohos:visibility="hide"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal"
+        ohos:alignment="vertical_center"
+        ohos:clickable="true"
+        ohos:top_margin="16vp">
+
+        <Image
+            ohos:height="12fp"
+            ohos:width="12fp"
+            ohos:scale_mode="zoom_center"
+            ohos:start_margin="0vp"
+            ohos:end_margin="2vp" />
+
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text_size="12fp"
+            ohos:text_color="$color:brand" />
+
+    </DirectionalLayout>
+
+    <Image
+        ohos:id="$+id:announcement_item_image"
+        ohos:height="128vp"
+        ohos:width="128vp"
+        ohos:image_src="$media:image_placeholder"
+        ohos:scale_mode="clip_center"
+        ohos:top_margin="16vp" />
+
+</DirectionalLayout>

@@ -49,7 +49,7 @@
                     ohos:height="match_content"
                     ohos:width="match_parent"
                     ohos:text="$string:profile_loading"
-                    ohos:text_size="16vp"
+                    ohos:text_size="16fp"
                     ohos:text_color="$color:vant_cell_text_color" />
 
                 <Text
@@ -57,7 +57,7 @@
                     ohos:visibility="hide"
                     ohos:height="match_content"
                     ohos:width="match_parent"
-                    ohos:text_size="14vp"
+                    ohos:text_size="14fp"
                     ohos:text_color="$color:vant_cell_label_color" />
 
             </DirectionalLayout>
@@ -88,8 +88,8 @@
             ohos:clickable="true">
 
             <Image
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="0vp"
                 ohos:end_margin="4vp"
                 ohos:scale_mode="zoom_center"
@@ -100,12 +100,12 @@
                 ohos:width="0vp"
                 ohos:weight="1"
                 ohos:text="$string:profile_login"
-                ohos:text_size="14vp"
+                ohos:text_size="14fp"
                 ohos:text_color="$color:vant_cell_text_color" />
 
             <Image
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="4vp"
                 ohos:end_margin="0vp"
                 ohos:scale_mode="zoom_center"
@@ -130,8 +130,8 @@
             ohos:clickable="true">
 
             <Image
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="0vp"
                 ohos:end_margin="4vp"
                 ohos:scale_mode="zoom_center"
@@ -142,12 +142,12 @@
                 ohos:width="0vp"
                 ohos:weight="1"
                 ohos:text="$string:profile_logout"
-                ohos:text_size="14vp"
+                ohos:text_size="14fp"
                 ohos:text_color="$color:vant_cell_text_color" />
 
             <Image
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="4vp"
                 ohos:end_margin="0vp"
                 ohos:scale_mode="zoom_center"
@@ -182,8 +182,8 @@
             ohos:clickable="false">
 
             <Image
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="0vp"
                 ohos:end_margin="4vp"
                 ohos:scale_mode="zoom_center"
@@ -194,20 +194,20 @@
                 ohos:width="0vp"
                 ohos:weight="1"
                 ohos:text="$string:profile_feedbacks"
-                ohos:text_size="14vp"
+                ohos:text_size="14fp"
                 ohos:text_color="$color:vant_cell_text_color" />
 
             <Text
                 ohos:height="match_content"
                 ohos:width="match_content"
                 ohos:text="$string:profile_requires_login"
-                ohos:text_size="14vp"
+                ohos:text_size="14fp"
                 ohos:text_color="$color:vant_cell_label_color" />
 
             <Image
                 ohos:visibility="hide"
-                ohos:height="16vp"
-                ohos:width="16vp"
+                ohos:height="16fp"
+                ohos:width="16fp"
                 ohos:start_margin="4vp"
                 ohos:end_margin="0vp"
                 ohos:scale_mode="zoom_center"
@@ -252,8 +252,8 @@
                 ohos:alignment="vertical_center">
 
                 <Image
-                    ohos:height="16vp"
-                    ohos:width="16vp"
+                    ohos:height="16fp"
+                    ohos:width="16fp"
                     ohos:start_margin="0vp"
                     ohos:end_margin="4vp"
                     ohos:scale_mode="zoom_center"
@@ -264,7 +264,7 @@
                     ohos:width="0vp"
                     ohos:weight="1"
                     ohos:text="$string:profile_about"
-                    ohos:text_size="14vp"
+                    ohos:text_size="14fp"
                     ohos:text_color="$color:vant_cell_label_color" />
 
             </DirectionalLayout>
@@ -273,7 +273,7 @@
                 ohos:height="match_content"
                 ohos:width="match_parent"
                 ohos:text="$string:app_name"
-                ohos:text_size="16vp"
+                ohos:text_size="16fp"
                 ohos:text_weight="500"
                 ohos:text_color="$color:vant_cell_text_color"
                 ohos:top_margin="8vp" />
@@ -283,7 +283,7 @@
                 ohos:height="match_content"
                 ohos:width="match_parent"
                 ohos:text="$string:profile_version_app"
-                ohos:text_size="12vp"
+                ohos:text_size="12fp"
                 ohos:text_color="$color:vant_cell_label_color"
                 ohos:top_margin="4vp" />
 
@@ -292,7 +292,7 @@
                 ohos:height="match_content"
                 ohos:width="match_parent"
                 ohos:text="$string:profile_version_service"
-                ohos:text_size="12vp"
+                ohos:text_size="12fp"
                 ohos:text_color="$color:vant_cell_label_color"
                 ohos:top_margin="4vp" />
 

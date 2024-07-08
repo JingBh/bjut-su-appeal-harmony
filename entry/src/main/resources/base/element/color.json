@@ -21,8 +21,12 @@
       "value": "#9ca3af"
     },
     {
-      "name": "red_500",
-      "value": "#ef4444"
+      "name": "gray_500",
+      "value": "#6b7280"
+    },
+    {
+      "name": "gray_600",
+      "value": "#4b5563"
     },
     {
       "name": "gray_900",
@@ -31,6 +35,10 @@
     {
       "name": "neutral_100",
       "value": "#f5f5f5"
+    },
+    {
+      "name": "red_500",
+      "value": "#ef4444"
     },
     {
       "name": "vant_cell_background_color",

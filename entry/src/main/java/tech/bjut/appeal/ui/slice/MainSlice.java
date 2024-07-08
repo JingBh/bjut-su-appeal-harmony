@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 
 public class MainSlice extends AbilitySlice {
 
-    int activeNav = 3;
+    int activeNav = 0;
 
     @Override
     public void onStart(Intent intent) {

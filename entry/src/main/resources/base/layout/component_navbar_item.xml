@@ -16,6 +16,6 @@
         ohos:height="match_content"
         ohos:width="match_parent"
         ohos:top_margin="4vp"
-        ohos:text_size="12vp"
+        ohos:text_size="12fp"
         ohos:text_alignment="center" />
 </DirectionalLayout>

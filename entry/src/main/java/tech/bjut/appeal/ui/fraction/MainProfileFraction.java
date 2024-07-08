@@ -105,21 +105,26 @@ public class MainProfileFraction extends Fraction {
             if (userRequest != null) {
                 userRequest.cancel();
             }
-            userRequest = WebService.getUser(token, user -> this.getUITaskDispatcher().syncDispatch(() -> {
-                if (user != null) {
-                    name.setText(user.getName());
-                    uid.setText(user.getUid());
-                    uid.setVisibility(Component.VISIBLE);
-                    loginButton.setVisibility(Component.HIDE);
-                    logoutButton.setVisibility(Component.VISIBLE);
-                    loadCount();
-                } else {
-                    name.setText(ResourceTable.String_profile_anonymous);
-                    uid.setVisibility(Component.HIDE);
-                    loginButton.setVisibility(Component.VISIBLE);
-                    logoutButton.setVisibility(Component.HIDE);
+            userRequest = WebService.getUser(token, user -> {
+                if (this.getUITaskDispatcher() == null) {
+                    return;
                 }
-            }));
+                this.getUITaskDispatcher().syncDispatch(() -> {
+                    if (user != null) {
+                        name.setText(user.getName());
+                        uid.setText(user.getUid());
+                        uid.setVisibility(Component.VISIBLE);
+                        loginButton.setVisibility(Component.HIDE);
+                        logoutButton.setVisibility(Component.VISIBLE);
+                        loadCount();
+                    } else {
+                        name.setText(ResourceTable.String_profile_anonymous);
+                        uid.setVisibility(Component.HIDE);
+                        loginButton.setVisibility(Component.VISIBLE);
+                        logoutButton.setVisibility(Component.HIDE);
+                    }
+                });
+            });
         });
     }
 
@@ -133,6 +138,9 @@ public class MainProfileFraction extends Fraction {
                 userCountRequest.cancel();
             }
             userCountRequest = WebService.getUserCount(TokenUtil.getToken(MainProfileFraction.this), userCount -> {
+                if (this.getUITaskDispatcher() == null) {
+                    return;
+                }
                 this.getUITaskDispatcher().syncDispatch(() -> {
                     if (userCount != null) {
                         container.setClickable(true);

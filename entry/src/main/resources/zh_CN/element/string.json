@@ -127,6 +127,26 @@
     {
       "name": "login_hint",
       "value": "您输入的密码仅用于向统一认证服务发送请求以验证身份，不会以任何形式保存，请放心使用。"
+    },
+    {
+      "name": "list_loading",
+      "value": "正在加载更多数据..."
+    },
+    {
+      "name": "list_load_failed",
+      "value": "加载数据失败"
+    },
+    {
+      "name": "list_no_more",
+      "value": "没有更多数据了~"
+    },
+    {
+      "name": "list_collapse",
+      "value": "收起"
+    },
+    {
+      "name": "list_expand",
+      "value": "展开"
     }
   ]
 }

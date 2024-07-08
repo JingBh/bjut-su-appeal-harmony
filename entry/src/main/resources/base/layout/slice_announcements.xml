@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ListContainer
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:announcements_list"
     ohos:height="match_parent"
     ohos:width="match_parent"
-    ohos:match_viewport="false"
-    ohos:rebound_effect="true">
-
-    <DirectionalLayout
-        ohos:height="match_content"
-        ohos:width="match_parent"
-        ohos:orientation="vertical">
-
-    </DirectionalLayout>
-
-</ScrollView>
+    ohos:orientation="vertical"
+    ohos:start_margin="16vp"
+    ohos:end_margin="16vp"
+    ohos:rebound_effect="true" />

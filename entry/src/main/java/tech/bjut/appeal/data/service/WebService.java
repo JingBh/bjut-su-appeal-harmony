@@ -6,11 +6,13 @@ import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tech.bjut.appeal.ResourceTable;
+import org.jetbrains.annotations.Nullable;
 import tech.bjut.appeal.data.model.*;
 import tech.bjut.appeal.data.util.ValueCallback;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class WebService {
 
@@ -83,6 +85,64 @@ public class WebService {
                     JsonAdapter<UserCountResponseDto> jsonAdapter = moshi.adapter(UserCountResponseDto.class);
                     UserCountResponseDto userCount = jsonAdapter.fromJson(response.body().source());
                     callback.call(userCount);
+                    return;
+                }
+                callback.call(null);
+            }
+        });
+        return call;
+    }
+
+    public static Call getAnnouncements(@Nullable String cursor, ValueCallback<AnnouncementsResponseDto> callback) {
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/announcements").newBuilder();
+        if (cursor != null) {
+            urlBuilder.addQueryParameter("cursor", cursor);
+        }
+        Request request = new Request.Builder()
+            .url(urlBuilder.build())
+            .build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                HiLog.error(LOG_LABEL, e.getMessage());
+                callback.call(null);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() == 200 && response.body() != null) {
+                    Moshi moshi = new Moshi.Builder().build();
+                    JsonAdapter<AnnouncementsResponseDto> jsonAdapter = moshi.adapter(AnnouncementsResponseDto.class);
+                    AnnouncementsResponseDto announcements = jsonAdapter.fromJson(response.body().source());
+                    callback.call(announcements);
+                    return;
+                }
+                callback.call(null);
+            }
+        });
+        return call;
+    }
+
+    public static Call getAttachment(File cacheDir, String id, ValueCallback<InputStream> callback) {
+        OkHttpClient cachedClient = client.newBuilder()
+            .cache(new Cache(cacheDir, 100 * 1024 * 1024))
+            .build();
+        Request request = new Request.Builder()
+            .url(BASE_URL + "/attachments/" + id)
+            .build();
+        Call call = cachedClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                HiLog.error(LOG_LABEL, e.getMessage());
+                callback.call(null);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.code() == 200 && response.body() != null) {
+                    callback.call(response.body().byteStream());
                     return;
                 }
                 callback.call(null);
