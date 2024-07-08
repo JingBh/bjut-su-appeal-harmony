@@ -29,6 +29,14 @@
       "value": "匿名用户"
     },
     {
+      "name": "profile_loading",
+      "value": "加载中..."
+    },
+    {
+      "name": "profile_load_failed",
+      "value": "加载用户信息失败"
+    },
+    {
       "name": "profile_login",
       "value": "登录"
     },

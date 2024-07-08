@@ -29,6 +29,14 @@
       "value": "Anonymous User"
     },
     {
+      "name": "profile_loading",
+      "value": "Loading..."
+    },
+    {
+      "name": "profile_load_failed",
+      "value": "Failed to load user info"
+    },
+    {
       "name": "profile_login",
       "value": "Login"
     },

@@ -57,6 +57,9 @@ public class LoginSlice extends AbilitySlice {
             buttonText.setText(ResourceTable.String_login_button_loading);
 
             this.getMainTaskDispatcher().asyncDispatch(() -> {
+                if (request != null) {
+                    request.cancel();
+                }
                 request = WebService.postToken(new LoginRequestDto(username, password), new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {

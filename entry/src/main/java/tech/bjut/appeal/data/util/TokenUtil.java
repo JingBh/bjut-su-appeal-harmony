@@ -25,6 +25,12 @@ public class TokenUtil {
         preferences.putLong("expires_at", Instant.now().getEpochSecond() + token.getExpiresIn());
     }
 
+    public static void deleteToken(Context context) {
+        Preferences preferences = getPreferences(context);
+        preferences.delete("token");
+        preferences.delete("expires_at");
+    }
+
     public static Preferences getPreferences(Context context) {
         return new DatabaseHelper(context)
             .getPreferences("auth");

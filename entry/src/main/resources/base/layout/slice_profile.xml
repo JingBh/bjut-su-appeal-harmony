@@ -48,11 +48,13 @@
                     ohos:id="$+id:profile_name"
                     ohos:height="match_content"
                     ohos:width="match_parent"
+                    ohos:text="$string:profile_loading"
                     ohos:text_size="16vp"
                     ohos:text_color="$color:vant_cell_text_color" />
 
                 <Text
                     ohos:id="$+id:profile_uid"
+                    ohos:visibility="hide"
                     ohos:height="match_content"
                     ohos:width="match_parent"
                     ohos:text_size="14vp"
@@ -73,6 +75,7 @@
         <!-- Cell 2: Login -->
         <DirectionalLayout
             ohos:id="$+id:profile_login"
+            ohos:visibility="hide"
             ohos:height="match_content"
             ohos:width="match_parent"
             ohos:orientation="horizontal"
