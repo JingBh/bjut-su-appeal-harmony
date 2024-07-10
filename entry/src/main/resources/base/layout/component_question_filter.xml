@@ -56,6 +56,7 @@
             ohos:end_margin="4vp" />
 
         <TextField
+            ohos:id="$+id:questions_filter_search"
             ohos:height="match_content"
             ohos:width="0vp"
             ohos:weight="1"

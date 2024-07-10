@@ -11,6 +11,7 @@ import tech.bjut.appeal.data.model.Attachment;
 import tech.bjut.appeal.data.model.CampusEnum;
 import tech.bjut.appeal.data.model.Question;
 import tech.bjut.appeal.data.service.WebService;
+import tech.bjut.appeal.ui.util.DialogUtil;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class QuestionsFraction extends Fraction {
 
@@ -27,6 +29,8 @@ public class QuestionsFraction extends Fraction {
     private boolean history;
 
     private List<Question> items;
+
+    private List<Question> filteredItems;
 
     private CampusEnum filterCampus;
 
@@ -54,19 +58,16 @@ public class QuestionsFraction extends Fraction {
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         Component component = scatter.parse(ResourceTable.Layout_slice_questions, container, false);
 
+        filterCampus = null;
+        searchQuery = "";
+
         items = new ArrayList<>();
+        filteredItems = new ArrayList<>();
         currentCursor = null;
         loadFinished = false;
         listContainer = component.findComponentById(ResourceTable.Id_answers_list);
         listContainer.setItemProvider(new ItemProvider());
-        listContainer.setScrollListener(() -> {
-            if (loading || loadFinished) {
-                return;
-            }
-            if (listContainer.getItemPosByVisibleIndex(listContainer.getVisibleIndexCount() - 1) >= listContainer.getItemProvider().getCount() - 3) {
-                loadData();
-            }
-        });
+        listContainer.setScrollListener(this::onScrollBottom);
 
         loadData();
 
@@ -81,9 +82,18 @@ public class QuestionsFraction extends Fraction {
         }
     }
 
+    private void onScrollBottom() {
+        if (loading || loadFinished) {
+            return;
+        }
+        if (listContainer.getItemPosByVisibleIndex(listContainer.getVisibleIndexCount() - 1) >= listContainer.getItemProvider().getCount() - 3) {
+            loadData();
+        }
+    }
+
     private void loadData() {
         loading = true;
-        listContainer.getItemProvider().notifyDataSetItemChanged(items.size() + (filter ? 1 : 0));
+        listContainer.getItemProvider().notifyDataSetItemChanged(filteredItems.size() + (filter ? 1 : 0));
         this.getMainTaskDispatcher().asyncDispatch(() -> {
             if (request != null) {
                 request.cancel();
@@ -104,19 +114,44 @@ public class QuestionsFraction extends Fraction {
                             loadFinished = true;
                         } else {
                             items.addAll(data.getData());
+                            filteredItems = getFilteredItems();
                         }
                         currentCursor = data.getCursor();
                         listContainer.getItemProvider().notifyDataChanged();
                     }
-                    listContainer.getItemProvider().notifyDataSetItemChanged(items.size() + (filter ? 1 : 0));
+                    listContainer.getItemProvider().notifyDataSetItemChanged(filteredItems.size() + (filter ? 1 : 0));
                 });
             });
         });
     }
 
+    public List<Question> getFilteredItems() {
+        if (items == null) {
+            return new ArrayList<>();
+        }
+
+        if (!filter) {
+            return items;
+        }
+
+        return items.stream().filter(question -> {
+            if (filterCampus != null && question.getCampus() != filterCampus) {
+                return false;
+            }
+            if (searchQuery != null
+                && !searchQuery.isEmpty()
+                && !question.getContent().contains(searchQuery)
+                && !(question.getAnswer() != null && question.getAnswer().getContent().contains(searchQuery))) {
+                return false;
+            }
+            return true;
+        }).collect(Collectors.toList());
+    }
+
     public void setFilter(boolean filter) {
         this.filter = filter;
-        this.listContainer.getItemProvider().notifyDataChanged();
+        listContainer.getItemProvider().notifyDataChanged();
+        onScrollBottom();
     }
 
     public void setHistory(boolean history) {
@@ -130,21 +165,21 @@ public class QuestionsFraction extends Fraction {
     private class ItemProvider extends BaseItemProvider {
         @Override
         public int getCount() {
-            return items.size() + (filter ? 2 : 1);
+            return filteredItems.size() + (filter ? 2 : 1);
         }
 
         @Override
         public Object getItem(int i) {
             if (filter) {
-                if (i == 0 || i == items.size() + 1) {
+                if (i == 0 || i == filteredItems.size() + 1) {
                     return null;
                 }
-                return items.get(i - 1);
+                return filteredItems.get(i - 1);
             } else {
-                if (i == items.size()) {
+                if (i == filteredItems.size()) {
                     return null;
                 }
-                return items.get(i);
+                return filteredItems.get(i);
             }
         }
 
@@ -154,15 +189,15 @@ public class QuestionsFraction extends Fraction {
                 if (i == 0) {
                     return -2;
                 }
-                if (i == items.size() + 1) {
+                if (i == filteredItems.size() + 1) {
                     return -1;
                 }
-                return items.get(i - 1).getId();
+                return filteredItems.get(i - 1).getId();
             } else {
-                if (i == items.size()) {
+                if (i == filteredItems.size()) {
                     return -1;
                 }
-                return items.get(i).getId();
+                return filteredItems.get(i).getId();
             }
         }
 
@@ -175,9 +210,29 @@ public class QuestionsFraction extends Fraction {
                 } else {
                     component = LayoutScatter.getInstance(getApplicationContext())
                         .parse(ResourceTable.Layout_component_question_filter, componentContainer, false);
+
+                    component.findComponentById(ResourceTable.Id_questions_filter_campus)
+                        .setClickedListener(listener -> {
+                            DialogUtil.showCampusChoose(QuestionsFraction.this, filterCampus, campus -> {
+                                filterCampus = campus;
+                                filteredItems = getFilteredItems();
+                                listContainer.getItemProvider().notifyDataChanged();
+                                onScrollBottom();
+                            });
+                        });
+
+                    ((TextField) component.findComponentById(ResourceTable.Id_questions_filter_search))
+                        .addTextObserver((text, start, end, count) -> {
+                            searchQuery = text;
+                            filteredItems = getFilteredItems();
+                            listContainer.getItemProvider().notifyDataChanged();
+                            onScrollBottom();
+                        });
                 }
 
-                // TODO
+                ((TextField) component.findComponentById(ResourceTable.Id_questions_filter_search))
+                    .setText(searchQuery);
+
                 return component;
             }
 
@@ -189,6 +244,7 @@ public class QuestionsFraction extends Fraction {
                     component = (Text) LayoutScatter.getInstance(getApplicationContext())
                         .parse(ResourceTable.Layout_component_list_hint, componentContainer, false);
                 }
+
                 if (loading) {
                     component.setText(ResourceTable.String_list_loading);
                 } else if (loadFinished) {
@@ -198,6 +254,7 @@ public class QuestionsFraction extends Fraction {
                 } else {
                     component.setVisibility(Component.HIDE);
                 }
+
                 return component;
             }
 
