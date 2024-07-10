@@ -12,6 +12,7 @@ public class HistorySlice extends AbilitySlice {
     @Override
     protected void onStart(Intent intent) {
         super.onStart(intent);
+        this.setUIContent(ResourceTable.Layout_slice_history);
 
         if (TokenUtil.getToken() == null) {
             this.present(new LoginSlice(), new Intent());
@@ -19,7 +20,6 @@ public class HistorySlice extends AbilitySlice {
             return;
         }
 
-        this.setUIContent(ResourceTable.Layout_slice_history);
         FractionAbility ability = (FractionAbility) this.getAbility();
         ability.getFractionManager().startFractionScheduler()
             .replace(ResourceTable.Id_history_content, new QuestionsFraction(false, true))

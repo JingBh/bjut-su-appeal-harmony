@@ -26,6 +26,7 @@ public class MainSlice extends AbilitySlice {
         this.setUIContent(ResourceTable.Layout_slice_main);
 
         ComponentContainer navbar = this.findComponentById(ResourceTable.Id_main_navbar);
+        navbar.removeAllComponents();
         IntStream.range(0, NavbarItem.ITEMS.length).forEachOrdered(i -> {
             final NavbarItem item = NavbarItem.ITEMS[i];
 

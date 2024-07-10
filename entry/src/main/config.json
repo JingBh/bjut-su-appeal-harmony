@@ -33,7 +33,8 @@
               "action.system.home",
               "action.main",
               "action.login",
-              "action.history"
+              "action.history",
+              "action.question_success"
             ]
           }
         ],

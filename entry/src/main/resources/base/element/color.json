@@ -49,6 +49,10 @@
       "value": "#ef4444"
     },
     {
+      "name": "green_600",
+      "value": "#16a34a"
+    },
+    {
       "name": "vant_button_danger_background",
       "value": "#ee0a24"
     },

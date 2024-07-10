@@ -2,7 +2,8 @@
 <ScrollView
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
-    ohos:width="match_parent">
+    ohos:width="match_parent"
+    ohos:background_element="$color:neutral_100">
 
     <DirectionalLayout
         ohos:height="match_content"
@@ -11,8 +12,7 @@
         ohos:top_padding="16vp"
         ohos:bottom_padding="24vp"
         ohos:start_padding="16vp"
-        ohos:end_padding="16vp"
-        ohos:background_element="$color:neutral_100">
+        ohos:end_padding="16vp">
 
         <!-- Cell Group 1: Contact -->
         <Text

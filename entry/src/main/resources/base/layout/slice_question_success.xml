@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:top_padding="64vp"
+    ohos:bottom_padding="64vp"
+    ohos:start_padding="32vp"
+    ohos:end_padding="32vp"
+    ohos:background_element="$color:neutral_100"
+    ohos:alignment="horizontal_center">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:orientation="horizontal"
+        ohos:alignment="center">
+
+        <Image
+            ohos:height="30fp"
+            ohos:width="30fp"
+            ohos:image_src="$graphic:bi_send_check_success"
+            ohos:start_margin="0vp"
+            ohos:end_margin="16vp"
+            ohos:scale_mode="zoom_center" />
+
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text="$string:feedback_success"
+            ohos:text_size="30fp"
+            ohos:text_weight="700"
+            ohos:text_color="$color:green_600" />
+
+    </DirectionalLayout>
+
+    <Text
+        ohos:id="$+id:feedback_success_hint"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:top_margin="16vp"
+        ohos:text="$string:feedback_success_hint"
+        ohos:text_size="12fp"
+        ohos:text_color="$color:gray_500"
+        ohos:text_alignment="center"
+        ohos:multiple_lines="true"
+        ohos:line_height_num="1.2" />
+
+    <DirectionalLayout
+        ohos:id="$+id:feedback_success_action_home"
+        ohos:height="44vp"
+        ohos:width="192vp"
+        ohos:top_margin="64vp"
+        ohos:background_element="$graphic:container_button_secondary"
+        ohos:orientation="horizontal"
+        ohos:alignment="center"
+        ohos:clickable="true">
+
+        <Image
+            ohos:height="14fp"
+            ohos:width="14fp"
+            ohos:start_margin="0vp"
+            ohos:end_margin="4vp"
+            ohos:image_src="$graphic:bi_house_door"
+            ohos:scale_mode="zoom_center" />
+
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text="$string:feedback_success_home"
+            ohos:text_size="14fp"
+            ohos:text_color="$color:gray_900" />
+
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:id="$+id:feedback_success_action_mine"
+        ohos:height="44vp"
+        ohos:width="192vp"
+        ohos:top_margin="16vp"
+        ohos:background_element="$graphic:container_button_primary"
+        ohos:orientation="horizontal"
+        ohos:alignment="center"
+        ohos:clickable="true">
+
+        <Image
+            ohos:height="14fp"
+            ohos:width="14fp"
+            ohos:start_margin="0vp"
+            ohos:end_margin="4vp"
+            ohos:image_src="$graphic:bi_clock_history_white"
+            ohos:scale_mode="zoom_center" />
+
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text="$string:feedback_success_mine"
+            ohos:text_size="14fp"
+            ohos:text_color="#ffffff" />
+
+    </DirectionalLayout>
+
+</DirectionalLayout>

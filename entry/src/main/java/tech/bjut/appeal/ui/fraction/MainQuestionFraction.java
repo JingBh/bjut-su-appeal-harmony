@@ -3,6 +3,7 @@ package tech.bjut.appeal.ui.fraction;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
+import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
@@ -25,6 +26,8 @@ import tech.bjut.appeal.data.model.QuestionRequestDto;
 import tech.bjut.appeal.data.model.User;
 import tech.bjut.appeal.data.service.WebService;
 import tech.bjut.appeal.data.util.TokenUtil;
+import tech.bjut.appeal.ui.ability.MainAbility;
+import tech.bjut.appeal.ui.slice.QuestionSuccessSlice;
 import tech.bjut.appeal.ui.util.DialogUtil;
 
 import java.io.IOException;
@@ -113,7 +116,6 @@ public class MainQuestionFraction extends Fraction {
             });
         }
 
-        selectedCampus = null;
         component.findComponentById(ResourceTable.Id_feedback_campus).setClickedListener(listener -> {
             Component chooseComponent = LayoutScatter.getInstance(this)
                 .parse(ResourceTable.Layout_dialog_campus_choose, null, false);
@@ -147,7 +149,6 @@ public class MainQuestionFraction extends Fraction {
             dialog.show();
         });
 
-        formContentCount.setText("0/20000");
         formContent.addTextObserver((text, start, end, count) -> {
             if (formContent.getText() == null) {
                 formContentCount.setText("0/20000");
@@ -186,6 +187,7 @@ public class MainQuestionFraction extends Fraction {
                 });
         });
 
+        resetForm();
         resetFormErrors();
         restoreDraft();
 
@@ -241,6 +243,21 @@ public class MainQuestionFraction extends Fraction {
                 formContentCount.setText(formContent.getText().length() + "/20000");
             }
         } catch (Exception ignored) {}
+    }
+
+    private void resetForm() {
+        if (user != null) {
+            formUid.setText(user.getUid());
+            formName.setText(user.getName());
+        } else {
+            formUid.setText(null);
+            formName.setText(null);
+        }
+        formContact.setText(null);
+        selectedCampus = null;
+        formCampusText.setText(null);
+        formContent.setText(null);
+        formContentCount.setText("0/20000");
     }
 
     private void resetFormErrors() {
@@ -325,8 +342,12 @@ public class MainQuestionFraction extends Fraction {
                     });
                 } else {
                     MainQuestionFraction.this.getUITaskDispatcher().syncDispatch(() -> {
+                        resetForm();
+                        saveDraft();
                         dialog.destroy();
-                        // TODO: navigate to success page
+                        MainAbility ability = (MainAbility) MainQuestionFraction.this.getFractionAbility();
+                        AbilitySlice slice = ability.getCurrentSlice();
+                        slice.present(new QuestionSuccessSlice(), new Intent());
                     });
                 }
             }

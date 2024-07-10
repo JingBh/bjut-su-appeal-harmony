@@ -265,6 +265,22 @@
       "value": "Are you sure you want to submit?"
     },
     {
+      "name": "feedback_success",
+      "value": "Feedback submitted!"
+    },
+    {
+      "name": "feedback_success_hint",
+      "value": "If student ID filled in correctly, you can login and check your previous feedbacks."
+    },
+    {
+      "name": "feedback_success_home",
+      "value": "Back to Home"
+    },
+    {
+      "name": "feedback_success_mine",
+      "value": "My Feedbacks"
+    },
+    {
       "name": "dialog_confirm_title",
       "value": "Notice"
     },

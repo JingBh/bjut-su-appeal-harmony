@@ -265,6 +265,22 @@
       "value": "确定要提交吗？"
     },
     {
+      "name": "feedback_success",
+      "value": "反馈已提交！"
+    },
+    {
+      "name": "feedback_success_hint",
+      "value": "若正确填写了学号，可以登录后查看已提交的反馈内容"
+    },
+    {
+      "name": "feedback_success_home",
+      "value": "返回首页"
+    },
+    {
+      "name": "feedback_success_mine",
+      "value": "查看反馈"
+    },
+    {
       "name": "dialog_confirm_title",
       "value": "注意"
     },
