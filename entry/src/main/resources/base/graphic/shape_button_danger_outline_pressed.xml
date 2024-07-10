@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:shape="rectangle">
+    <corners ohos:radius="4vp" />
+    <solid ohos:color="#1a000000" />
+    <stroke ohos:width="1vp" ohos:color="$color:vant_button_danger_background" />
+</shape>

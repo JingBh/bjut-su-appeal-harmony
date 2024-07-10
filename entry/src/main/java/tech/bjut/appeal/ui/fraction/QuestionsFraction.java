@@ -3,6 +3,7 @@ package tech.bjut.appeal.ui.fraction;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
+import ohos.agp.window.dialog.CommonDialog;
 import ohos.media.image.ImageSource;
 import okhttp3.Call;
 import tech.bjut.appeal.ResourceTable;
@@ -347,9 +348,39 @@ public class QuestionsFraction extends Fraction {
 
             Component actionsComponent = component.findComponentById(ResourceTable.Id_question_item_actions);
             Component actionsComponentBorder = component.findComponentById(ResourceTable.Id_question_item_actions_border);
-            if (false) { // TODO
+            if (question.getAnswer() == null) {
                 actionsComponent.setVisibility(Component.VISIBLE);
                 actionsComponentBorder.setVisibility(Component.VISIBLE);
+
+                actionsComponent.findComponentById(ResourceTable.Id_question_item_actions_delete)
+                    .setClickedListener(listener -> {
+                        DialogUtil.showConfirm(QuestionsFraction.this, ResourceTable.String_questions_delete_confirm, true, () -> {
+                            CommonDialog dialog = DialogUtil.showLoading(QuestionsFraction.this);
+                            QuestionsFraction.this.getMainTaskDispatcher().asyncDispatch(() -> {
+                                WebService.deleteQuestion(question.getId(), success -> {
+                                    if (QuestionsFraction.this.getUITaskDispatcher() == null) {
+                                        return;
+                                    }
+                                    if (success) {
+                                        QuestionsFraction.this.getUITaskDispatcher().syncDispatch(() -> {
+                                            dialog.destroy();
+                                            DialogUtil.showToast(QuestionsFraction.this, ResourceTable.String_questions_delete_success);
+                                            items = new ArrayList<>();
+                                            filteredItems = new ArrayList<>();
+                                            currentCursor = null;
+                                            loadFinished = false;
+                                            loadData();
+                                        });
+                                    } else {
+                                        QuestionsFraction.this.getUITaskDispatcher().syncDispatch(() -> {
+                                            dialog.destroy();
+                                            DialogUtil.showToast(QuestionsFraction.this, ResourceTable.String_questions_delete_failed);
+                                        });
+                                    }
+                                });
+                            });
+                        });
+                    });
             } else {
                 actionsComponent.setVisibility(Component.HIDE);
                 actionsComponentBorder.setVisibility(Component.HIDE);

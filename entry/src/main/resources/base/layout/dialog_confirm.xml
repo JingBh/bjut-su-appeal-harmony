@@ -22,6 +22,7 @@
         ohos:height="match_content"
         ohos:width="match_parent"
         ohos:text_size="14fp"
+        ohos:multiple_lines="true"
         ohos:line_height_num="1.2"
         ohos:text_color="$color:gray_600"
         ohos:text_alignment="center"

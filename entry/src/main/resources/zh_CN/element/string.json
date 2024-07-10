@@ -169,6 +169,22 @@
       "value": "答复"
     },
     {
+      "name": "questions_delete",
+      "value": "删除"
+    },
+    {
+      "name": "questions_delete_confirm",
+      "value": "确定要删除这则反馈吗？"
+    },
+    {
+      "name": "questions_delete_success",
+      "value": "删除反馈成功"
+    },
+    {
+      "name": "questions_delete_failed",
+      "value": "删除反馈失败"
+    },
+    {
       "name": "campus_main",
       "value": "平乐园校区"
     },

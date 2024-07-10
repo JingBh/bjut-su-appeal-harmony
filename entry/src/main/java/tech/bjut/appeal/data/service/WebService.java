@@ -180,6 +180,29 @@ public class WebService {
         return call;
     }
 
+    public static Call deleteQuestion(long id, ValueCallback<Boolean> callback) {
+        Request request = new Request.Builder()
+            .delete()
+            .url(BASE_URL + "/questions/" + id)
+            .addHeader("Authorization", "Bearer " + TokenUtil.getToken())
+            .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                HiLog.error(LOG_LABEL, e.getMessage());
+                callback.call(false);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                callback.call(response.isSuccessful());
+            }
+        });
+        return call;
+    }
+
     public static Call getAttachment(String id, ValueCallback<InputStream> callback) {
         OkHttpClient cachedClient = client.newBuilder()
             .cache(new Cache(CacheUtil.getCacheDir(), 100 * 1024 * 1024))
