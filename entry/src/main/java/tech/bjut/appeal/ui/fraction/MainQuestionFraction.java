@@ -7,8 +7,6 @@ import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
-import ohos.agp.components.element.ShapeElement;
-import ohos.agp.utils.LayoutAlignment;
 import ohos.agp.window.dialog.CommonDialog;
 import ohos.data.DatabaseHelper;
 import ohos.data.preferences.Preferences;
@@ -32,9 +30,6 @@ import tech.bjut.appeal.ui.util.DialogUtil;
 
 import java.io.IOException;
 import java.util.Map;
-
-import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_CONTENT;
-import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_PARENT;
 
 public class MainQuestionFraction extends Fraction {
 
@@ -117,36 +112,14 @@ public class MainQuestionFraction extends Fraction {
         }
 
         component.findComponentById(ResourceTable.Id_feedback_campus).setClickedListener(listener -> {
-            Component chooseComponent = LayoutScatter.getInstance(this)
-                .parse(ResourceTable.Layout_dialog_campus_choose, null, false);
-
-            Picker picker = chooseComponent.findComponentById(ResourceTable.Id_dialog_campus_choose_picker);
-            picker.setMinValue(0);
-            picker.setMaxValue(CampusEnum.values().length);
-            picker.setValue(selectedCampus == null ? 0 : selectedCampus.ordinal() + 1);
-            picker.setFormatter(i -> {
-                if (i == 0) {
-                    return this.getString(ResourceTable.String_feedback_campus_choose_unselected);
-                }
-                return this.getString(CampusEnum.toString(CampusEnum.values()[i - 1]));
-            });
-            picker.setValueChangedListener((listener1, oldValue, newValue) -> {
-                if (newValue == 0) {
-                    selectedCampus = null;
+            DialogUtil.showCampusChoose(this, selectedCampus, campus -> {
+                selectedCampus = campus;
+                if (campus == null) {
                     formCampusText.setText(null);
                 } else {
-                    selectedCampus = CampusEnum.values()[newValue - 1];
-                    formCampusText.setText(CampusEnum.toString(selectedCampus));
+                    formCampusText.setText(CampusEnum.toString(campus));
                 }
             });
-
-            CommonDialog dialog = new CommonDialog(this);
-            dialog.setContentCustomComponent(chooseComponent);
-            dialog.setSize(MATCH_PARENT, MATCH_CONTENT);
-            dialog.setAlignment(LayoutAlignment.BOTTOM);
-            dialog.setOffset(0, 0);
-            dialog.setAutoClosable(true);
-            dialog.show();
         });
 
         formContent.addTextObserver((text, start, end, count) -> {
@@ -162,29 +135,7 @@ public class MainQuestionFraction extends Fraction {
         });
 
         component.findComponentById(ResourceTable.Id_feedback_action_submit).setClickedListener(listener -> {
-            Component confirmComponent = LayoutScatter.getInstance(this)
-                .parse(ResourceTable.Layout_dialog_confirm, null, false);
-
-            Text content = confirmComponent.findComponentById(ResourceTable.Id_dialog_confirm_content);
-            content.setText(ResourceTable.String_feedback_submit_confirm);
-
-            CommonDialog dialog = new CommonDialog(this);
-            dialog.setCornerRadius(((ShapeElement) confirmComponent.getBackgroundElement()).getCornerRadius());
-            dialog.setAlignment(LayoutAlignment.CENTER);
-            dialog.setSize(MATCH_CONTENT, MATCH_CONTENT);
-            dialog.setContentCustomComponent(confirmComponent);
-            dialog.show();
-
-            confirmComponent.findComponentById(ResourceTable.Id_dialog_confirm_cancel)
-                .setClickedListener(listener1 -> {
-                    dialog.destroy();
-                });
-
-            confirmComponent.findComponentById(ResourceTable.Id_dialog_confirm_confirm)
-                .setClickedListener(listener1 -> {
-                    dialog.destroy();
-                    submit();
-                });
+            DialogUtil.showConfirm(this, ResourceTable.String_feedback_submit_confirm, false, this::submit);
         });
 
         resetForm();
