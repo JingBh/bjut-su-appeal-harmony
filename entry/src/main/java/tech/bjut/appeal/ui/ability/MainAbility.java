@@ -3,6 +3,7 @@ package tech.bjut.appeal.ui.ability;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
+import tech.bjut.appeal.ui.slice.HistorySlice;
 import tech.bjut.appeal.ui.slice.LoginSlice;
 import tech.bjut.appeal.ui.slice.MainSlice;
 
@@ -17,6 +18,7 @@ public class MainAbility extends FractionAbility {
         this.setMainRoute(MainSlice.class.getName());
         this.addActionRoute("action.main", MainSlice.class.getName());
         this.addActionRoute("action.login", LoginSlice.class.getName());
+        this.addActionRoute("action.history", HistorySlice.class.getName());
     }
 
     public AbilitySlice getCurrentSlice() {

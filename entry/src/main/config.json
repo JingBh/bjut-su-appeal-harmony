@@ -32,7 +32,8 @@
             "actions": [
               "action.system.home",
               "action.main",
-              "action.login"
+              "action.login",
+              "action.history"
             ]
           }
         ],

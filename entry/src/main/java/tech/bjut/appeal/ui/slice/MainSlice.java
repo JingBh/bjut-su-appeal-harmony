@@ -51,6 +51,7 @@ public class MainSlice extends AbilitySlice {
 
     @Override
     protected void onActive() {
+        super.onActive();
         MainAbility ability = (MainAbility) this.getAbility();
         ability.setCurrentSlice(this);
     }
@@ -69,7 +70,7 @@ public class MainSlice extends AbilitySlice {
         Text text = container.findComponentById(ResourceTable.Id_navbar_item_text);
 
         Element iconElement = new VectorElement(
-            this.getContext(),
+            this,
             active ? NavbarItem.ITEMS[index].getActiveImageId() : NavbarItem.ITEMS[index].getInactiveImageId()
         );
         icon.setImageElement(iconElement);

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:questions_filter"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="horizontal"
+    ohos:top_margin="16vp">
+
+    <DirectionalLayout
+        ohos:id="$+id:questions_filter_campus"
+        ohos:height="36vp"
+        ohos:width="match_content"
+        ohos:alignment="vertical_center"
+        ohos:orientation="horizontal"
+        ohos:background_element="$graphic:shape_filter_item"
+        ohos:start_padding="16vp"
+        ohos:end_padding="16vp"
+        ohos:clickable="true">
+
+        <Image
+            ohos:width="14fp"
+            ohos:height="14fp"
+            ohos:image_src="$graphic:bi_funnel_label"
+            ohos:scale_mode="zoom_center"
+            ohos:start_margin="0vp"
+            ohos:end_margin="4vp" />
+
+        <Text
+            ohos:width="match_content"
+            ohos:height="match_content"
+            ohos:text="$string:questions_campus_short"
+            ohos:text_size="14fp"
+            ohos:text_color="$color:gray_500" />
+
+    </DirectionalLayout>
+
+    <DirectionalLayout
+        ohos:height="36vp"
+        ohos:width="0vp"
+        ohos:weight="1"
+        ohos:alignment="vertical_center"
+        ohos:orientation="horizontal"
+        ohos:background_element="$graphic:shape_filter_item"
+        ohos:start_padding="12vp"
+        ohos:end_padding="12vp"
+        ohos:start_margin="12vp"
+        ohos:end_margin="0vp">
+
+        <Image
+            ohos:height="14fp"
+            ohos:width="14fp"
+            ohos:image_src="$graphic:bi_search_label"
+            ohos:scale_mode="zoom_center"
+            ohos:start_margin="0vp"
+            ohos:end_margin="4vp" />
+
+        <TextField
+            ohos:height="match_content"
+            ohos:width="0vp"
+            ohos:weight="1"
+            ohos:text_size="14fp"
+            ohos:text_color="$color:vant_cell_text_color"
+            ohos:hint="$string:list_search"
+            ohos:hint_color="$color:gray_400" />
+
+    </DirectionalLayout>
+
+</DirectionalLayout>

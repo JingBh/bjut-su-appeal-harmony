@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:dialog_loading"
+    ohos:height="match_content"
+    ohos:width="match_content"
+    ohos:orientation="horizontal"
+    ohos:start_padding="24vp"
+    ohos:end_padding="24vp"
+    ohos:top_padding="16vp"
+    ohos:bottom_padding="16vp"
+    ohos:background_element="$graphic:shape_dialog_center"
+    ohos:alignment="center">
+
+    <RoundProgressBar
+        ohos:height="24vp"
+        ohos:width="24vp"
+        ohos:start_margin="0vp"
+        ohos:end_margin="12vp"
+        ohos:progress_width="2vp"
+        ohos:progress_color="$color:brand"
+        ohos:infinite="true" />
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="$string:dialog_loading"
+        ohos:text_size="16fp"
+        ohos:text_color="$color:gray_900"
+        ohos:text_weight="500" />
+
+</DirectionalLayout>

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical"
+        ohos:top_padding="16vp"
+        ohos:bottom_padding="24vp"
+        ohos:start_padding="16vp"
+        ohos:end_padding="16vp"
+        ohos:background_element="$color:neutral_100">
+
+        <!-- Cell Group 1: Contact -->
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text="$string:feedback_contact"
+            ohos:text_size="14fp"
+            ohos:text_color="$color:vant_cell_label_color" />
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="vertical"
+            ohos:background_element="$graphic:shape_cell_group"
+            ohos:top_margin="16vp">
+
+            <!-- Cell 1: UID -->
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="horizontal"
+                ohos:top_padding="10vp"
+                ohos:bottom_padding="10vp"
+                ohos:start_padding="16vp"
+                ohos:end_padding="16vp">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="80vp"
+                    ohos:text="$string:feedback_contact_uid"
+                    ohos:text_size="14fp"
+                    ohos:text_color="$color:vant_cell_text_color" />
+
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="0vp"
+                    ohos:weight="1"
+                    ohos:orientation="vertical">
+
+                    <TextField
+                        ohos:id="$+id:feedback_uid"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
+                        ohos:text_size="14fp"
+                        ohos:text_input_type="pattern_text"
+                        ohos:hint="$string:feedback_contact_uid_placeholder" />
+
+                    <Text
+                        ohos:id="$+id:feedback_uid_error"
+                        ohos:visibility="hide"
+                        ohos:height="match_content"
+                        ohos:width="match_content"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_error_message_color"
+                        ohos:top_margin="4vp" />
+
+                </DirectionalLayout>
+
+            </DirectionalLayout>
+            <!-- End Cell 1 -->
+
+            <Component
+                ohos:height="0.5vp"
+                ohos:width="match_parent"
+                ohos:start_margin="16vp"
+                ohos:end_margin="16vp"
+                ohos:background_element="$color:vant_cell_border_color" />
+
+            <!-- Cell 2: Name -->
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="horizontal"
+                ohos:top_padding="10vp"
+                ohos:bottom_padding="10vp"
+                ohos:start_padding="16vp"
+                ohos:end_padding="16vp">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="80vp"
+                    ohos:text="$string:feedback_contact_name"
+                    ohos:text_size="14fp"
+                    ohos:text_color="$color:vant_cell_text_color" />
+
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="0vp"
+                    ohos:weight="1"
+                    ohos:orientation="vertical">
+
+                    <TextField
+                        ohos:id="$+id:feedback_name"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
+                        ohos:text_size="14fp"
+                        ohos:text_input_type="pattern_text"
+                        ohos:hint="$string:feedback_contact_name_placeholder" />
+
+                    <Text
+                        ohos:id="$+id:feedback_name_error"
+                        ohos:visibility="hide"
+                        ohos:height="match_content"
+                        ohos:width="match_content"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_error_message_color"
+                        ohos:top_margin="4vp" />
+
+                </DirectionalLayout>
+
+            </DirectionalLayout>
+            <!-- End Cell 2 -->
+
+            <Component
+                ohos:height="0.5vp"
+                ohos:width="match_parent"
+                ohos:start_margin="16vp"
+                ohos:end_margin="16vp"
+                ohos:background_element="$color:vant_cell_border_color" />
+
+            <!-- Cell 3: Contact -->
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="horizontal"
+                ohos:top_padding="10vp"
+                ohos:bottom_padding="10vp"
+                ohos:start_padding="16vp"
+                ohos:end_padding="16vp">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="80vp"
+                    ohos:text="$string:feedback_contact_contact"
+                    ohos:text_size="14fp"
+                    ohos:text_color="$color:vant_cell_text_color" />
+
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="0vp"
+                    ohos:weight="1"
+                    ohos:orientation="vertical">
+
+                    <TextField
+                        ohos:id="$+id:feedback_contact"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
+                        ohos:text_size="14fp"
+                        ohos:text_input_type="pattern_text"
+                        ohos:hint="$string:feedback_contact_contact_placeholder" />
+
+                    <Text
+                        ohos:id="$+id:feedback_contact_error"
+                        ohos:visibility="hide"
+                        ohos:height="match_content"
+                        ohos:width="match_content"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_error_message_color"
+                        ohos:top_margin="4vp" />
+
+                </DirectionalLayout>
+
+            </DirectionalLayout>
+            <!-- End Cell 3 -->
+
+        </DirectionalLayout>
+        <!-- End Cell Group 1 -->
+
+        <!-- Cell Group 2: Content -->
+        <Text
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text="$string:feedback_content"
+            ohos:text_size="14fp"
+            ohos:text_color="$color:vant_cell_label_color"
+            ohos:top_margin="16vp" />
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="vertical"
+            ohos:background_element="$graphic:shape_cell_group"
+            ohos:top_margin="16vp">
+
+            <!-- Cell 1: Campus -->
+            <DirectionalLayout
+                ohos:id="$+id:feedback_campus"
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="horizontal"
+                ohos:background_element="$graphic:container_cell_clickable"
+                ohos:top_padding="10vp"
+                ohos:bottom_padding="10vp"
+                ohos:start_padding="16vp"
+                ohos:end_padding="16vp"
+                ohos:clickable="true">
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="80vp"
+                    ohos:text="$string:feedback_content_campus"
+                    ohos:text_size="14fp"
+                    ohos:text_color="$color:vant_cell_text_color" />
+
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="0vp"
+                    ohos:weight="1"
+                    ohos:orientation="vertical">
+
+                    <Text
+                        ohos:id="$+id:feedback_campus_text"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
+                        ohos:text_size="14fp"
+                        ohos:text_input_type="pattern_text"
+                        ohos:hint="$string:feedback_content_campus_placeholder" />
+
+                    <Text
+                        ohos:id="$+id:feedback_campus_error"
+                        ohos:visibility="hide"
+                        ohos:height="match_content"
+                        ohos:width="match_content"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_error_message_color"
+                        ohos:top_margin="4vp" />
+
+                </DirectionalLayout>
+
+                <Image
+                    ohos:height="16fp"
+                    ohos:width="16fp"
+                    ohos:start_margin="4vp"
+                    ohos:end_margin="0vp"
+                    ohos:scale_mode="zoom_center"
+                    ohos:image_src="$graphic:bi_chevron_right_nav" />
+
+            </DirectionalLayout>
+            <!-- End Cell 1 -->
+
+            <Component
+                ohos:height="0.5vp"
+                ohos:width="match_parent"
+                ohos:start_margin="16vp"
+                ohos:end_margin="16vp"
+                ohos:background_element="$color:vant_cell_border_color" />
+
+            <!-- Cell 2: Content -->
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:orientation="vertical"
+                ohos:top_padding="10vp"
+                ohos:bottom_padding="10vp"
+                ohos:start_padding="16vp"
+                ohos:end_padding="16vp">
+
+                <TextField
+                    ohos:id="$+id:feedback_content"
+                    ohos:height="200vp"
+                    ohos:width="match_parent"
+                    ohos:text_size="14fp"
+                    ohos:line_height_num="1.2"
+                    ohos:text_input_type="pattern_text"
+                    ohos:multiple_lines="true"
+                    ohos:hint="$string:feedback_content_placeholder"
+                    ohos:text_alignment="start|top"
+                    ohos:scrollable="true" />
+
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="match_parent"
+                    ohos:orientation="horizontal"
+                    ohos:alignment="end">
+
+                    <Text
+                        ohos:id="$+id:feedback_content_error"
+                        ohos:visibility="hide"
+                        ohos:height="match_content"
+                        ohos:width="0vp"
+                        ohos:weight="1"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_error_message_color"
+                        ohos:top_margin="4vp" />
+
+                    <Text
+                        ohos:id="$+id:feedback_content_count"
+                        ohos:height="match_content"
+                        ohos:width="match_content"
+                        ohos:text_size="12fp"
+                        ohos:text_color="$color:vant_field_word_limit_color"
+                        ohos:top_margin="4vp" />
+
+                </DirectionalLayout>
+
+            </DirectionalLayout>
+            <!-- End Cell 2 -->
+
+        </DirectionalLayout>
+        <!-- End Cell Group 2 -->
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="horizontal"
+            ohos:alignment="center"
+            ohos:top_margin="16vp">
+
+            <DirectionalLayout
+                ohos:id="$+id:feedback_action_draft"
+                ohos:height="44vp"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:start_margin="0vp"
+                ohos:end_margin="16vp"
+                ohos:background_element="$graphic:container_button_secondary"
+                ohos:orientation="horizontal"
+                ohos:alignment="center"
+                ohos:clickable="true">
+
+                <Image
+                    ohos:height="14fp"
+                    ohos:width="14fp"
+                    ohos:start_margin="0vp"
+                    ohos:end_margin="4vp"
+                    ohos:image_src="$graphic:bi_floppy"
+                    ohos:scale_mode="zoom_center" />
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="match_content"
+                    ohos:text="$string:feedback_draft"
+                    ohos:text_size="14fp"
+                    ohos:text_color="$color:gray_900" />
+
+            </DirectionalLayout>
+
+            <DirectionalLayout
+                ohos:id="$+id:feedback_action_submit"
+                ohos:height="44vp"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:background_element="$graphic:container_button_primary"
+                ohos:orientation="horizontal"
+                ohos:alignment="center"
+                ohos:clickable="true">
+
+                <Image
+                    ohos:height="14fp"
+                    ohos:width="14fp"
+                    ohos:start_margin="0vp"
+                    ohos:end_margin="4vp"
+                    ohos:image_src="$graphic:bi_send_white"
+                    ohos:scale_mode="zoom_center" />
+
+                <Text
+                    ohos:height="match_content"
+                    ohos:width="match_content"
+                    ohos:text="$string:feedback_submit"
+                    ohos:text_size="14fp"
+                    ohos:text_color="#ffffff" />
+
+            </DirectionalLayout>
+
+        </DirectionalLayout>
+
+    </DirectionalLayout>
+
+</ScrollView>

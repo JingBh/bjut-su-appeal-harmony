@@ -2,17 +2,20 @@ package tech.bjut.appeal.data.service;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tech.bjut.appeal.data.model.*;
+import tech.bjut.appeal.data.util.CacheUtil;
+import tech.bjut.appeal.data.util.TokenUtil;
 import tech.bjut.appeal.data.util.ValueCallback;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 
 public class WebService {
 
@@ -33,10 +36,10 @@ public class WebService {
         return call;
     }
 
-    public static Call getUser(String token, ValueCallback<User> callback) {
+    public static Call getUser(ValueCallback<User> callback) {
         Request request = new Request.Builder()
             .url(BASE_URL + "/user")
-            .addHeader("Authorization", "Bearer " + token)
+            .addHeader("Authorization", "Bearer " + TokenUtil.getToken())
             .build();
 
         Call call = client.newCall(request);
@@ -49,7 +52,7 @@ public class WebService {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     Moshi moshi = new Moshi.Builder().build();
                     JsonAdapter<AuthenticationResponseDto> jsonAdapter = moshi.adapter(AuthenticationResponseDto.class);
                     AuthenticationResponseDto authentication = jsonAdapter.fromJson(response.body().source());
@@ -64,10 +67,10 @@ public class WebService {
         return call;
     }
 
-    public static Call getUserCount(String token, ValueCallback<UserCountResponseDto> callback) {
+    public static Call getUserCount(ValueCallback<UserCountResponseDto> callback) {
         Request request = new Request.Builder()
             .url(BASE_URL + "/questions/count")
-            .addHeader("Authorization", "Bearer " + token)
+            .addHeader("Authorization", "Bearer " + TokenUtil.getToken())
             .build();
 
         Call call = client.newCall(request);
@@ -80,7 +83,7 @@ public class WebService {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     Moshi moshi = new Moshi.Builder().build();
                     JsonAdapter<UserCountResponseDto> jsonAdapter = moshi.adapter(UserCountResponseDto.class);
                     UserCountResponseDto userCount = jsonAdapter.fromJson(response.body().source());
@@ -93,7 +96,7 @@ public class WebService {
         return call;
     }
 
-    public static Call getAnnouncements(@Nullable String cursor, ValueCallback<AnnouncementsResponseDto> callback) {
+    public static Call getAnnouncements(@Nullable String cursor, ValueCallback<CursorPaginationDto<Announcement>> callback) {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/announcements").newBuilder();
         if (cursor != null) {
             urlBuilder.addQueryParameter("cursor", cursor);
@@ -111,10 +114,11 @@ public class WebService {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     Moshi moshi = new Moshi.Builder().build();
-                    JsonAdapter<AnnouncementsResponseDto> jsonAdapter = moshi.adapter(AnnouncementsResponseDto.class);
-                    AnnouncementsResponseDto announcements = jsonAdapter.fromJson(response.body().source());
+                    Type adapterType = Types.newParameterizedType(CursorPaginationDto.class, Announcement.class);
+                    JsonAdapter<CursorPaginationDto<Announcement>> jsonAdapter = moshi.adapter(adapterType);
+                    CursorPaginationDto<Announcement> announcements = jsonAdapter.fromJson(response.body().source());
                     callback.call(announcements);
                     return;
                 }
@@ -124,9 +128,61 @@ public class WebService {
         return call;
     }
 
-    public static Call getAttachment(File cacheDir, String id, ValueCallback<InputStream> callback) {
+    public static Call getQuestions(@Nullable String cursor, boolean history, ValueCallback<CursorPaginationDto<Question>> callback) {
+        HttpUrl.Builder urlBuilder = HttpUrl
+            .parse(BASE_URL + (history ? "/questions/history" : "/questions"))
+            .newBuilder();
+        if (cursor != null) {
+            urlBuilder.addQueryParameter("cursor", cursor);
+        }
+        Request.Builder requestBuilder = new Request.Builder()
+            .url(urlBuilder.build());
+        if (history) {
+            requestBuilder.addHeader("Authorization", "Bearer " + TokenUtil.getToken());
+        }
+        Call call = client.newCall(requestBuilder.build());
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                HiLog.error(LOG_LABEL, e.getMessage());
+                callback.call(null);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful() && response.body() != null) {
+                    Moshi moshi = new Moshi.Builder().build();
+                    Type adapterType = Types.newParameterizedType(CursorPaginationDto.class, Question.class);
+                    JsonAdapter<CursorPaginationDto<Question>> jsonAdapter = moshi.adapter(adapterType);
+                    CursorPaginationDto<Question> questions = jsonAdapter.fromJson(response.body().source());
+                    callback.call(questions);
+                    return;
+                }
+                callback.call(null);
+            }
+        });
+        return call;
+    }
+
+    public static Call postQuestion(QuestionRequestDto data, Callback callback) {
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<QuestionRequestDto> jsonAdapter = moshi.adapter(QuestionRequestDto.class);
+
+        Request.Builder requestBuilder = new Request.Builder()
+            .post(RequestBody.create(jsonAdapter.toJson(data), MediaType.get("application/json")))
+            .url(BASE_URL + "/questions");
+        if (TokenUtil.getToken() != null) {
+            requestBuilder.addHeader("Authorization", "Bearer " + TokenUtil.getToken());
+        }
+
+        Call call = client.newCall(requestBuilder.build());
+        call.enqueue(callback);
+        return call;
+    }
+
+    public static Call getAttachment(String id, ValueCallback<InputStream> callback) {
         OkHttpClient cachedClient = client.newBuilder()
-            .cache(new Cache(cacheDir, 100 * 1024 * 1024))
+            .cache(new Cache(CacheUtil.getCacheDir(), 100 * 1024 * 1024))
             .build();
         Request request = new Request.Builder()
             .url(BASE_URL + "/attachments/" + id)
@@ -141,7 +197,7 @@ public class WebService {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.code() == 200 && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     callback.call(response.body().byteStream());
                     return;
                 }

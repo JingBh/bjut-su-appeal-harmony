@@ -4,29 +4,29 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AnnouncementsResponseDto {
+public class CursorPaginationDto<T> {
 
     @Nullable
     private String cursor;
 
-    private List<Announcement> data;
+    private List<T> data;
 
     @Nullable
-    private List<Announcement> pinned;
+    private List<T> pinned;
 
-    public AnnouncementsResponseDto() {}
+    public CursorPaginationDto() {}
 
     @Nullable
     public String getCursor() {
         return cursor;
     }
 
-    public List<Announcement> getData() {
+    public List<T> getData() {
         return data;
     }
 
     @Nullable
-    public List<Announcement> getPinned() {
+    public List<T> getPinned() {
         return pinned;
     }
 
@@ -34,11 +34,11 @@ public class AnnouncementsResponseDto {
         this.cursor = cursor;
     }
 
-    public void setData(List<Announcement> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 
-    public void setPinned(@Nullable List<Announcement> pinned) {
+    public void setPinned(@Nullable List<T> pinned) {
         this.pinned = pinned;
     }
 }

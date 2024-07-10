@@ -3,5 +3,6 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:shape="rectangle">
     <corners ohos:radius="4vp" />
-    <solid ohos:color="$color:brand_focus" />
+    <solid ohos:color="#ffffff" />
+    <stroke ohos:width="1vp" ohos:color="$color:vant_button_default_border_color" />
 </shape>

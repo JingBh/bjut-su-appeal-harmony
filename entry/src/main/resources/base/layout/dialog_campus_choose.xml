@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:dialog_campus_choose"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:alignment="center"
+    ohos:padding="8vp">
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="$string:feedback_campus_choose"
+        ohos:text_size="16fp"
+        ohos:text_weight="600" />
+
+    <Picker
+        ohos:id="$+id:dialog_campus_choose_picker"
+        ohos:height="256vp"
+        ohos:width="match_parent"
+        ohos:normal_text_size="16fp"
+        ohos:normal_text_color="$color:gray_500"
+        ohos:selected_text_size="16fp"
+        ohos:selected_text_color="$color:gray_900"
+        ohos:element_padding="12vp"
+        ohos:top_line_element="$color:gray_100"
+        ohos:bottom_line_element="$color:gray_100"
+        ohos:layout_alignment="vertical_center"
+        ohos:top_margin="16vp" />
+
+</DirectionalLayout>

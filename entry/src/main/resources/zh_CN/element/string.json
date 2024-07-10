@@ -147,6 +147,138 @@
     {
       "name": "list_expand",
       "value": "展开"
+    },
+    {
+      "name": "list_search",
+      "value": "搜索..."
+    },
+    {
+      "name": "questions_campus",
+      "value": "所在校区："
+    },
+    {
+      "name": "questions_campus_short",
+      "value": "校区"
+    },
+    {
+      "name": "questions_question",
+      "value": "反馈"
+    },
+    {
+      "name": "questions_answer",
+      "value": "答复"
+    },
+    {
+      "name": "campus_main",
+      "value": "平乐园校区"
+    },
+    {
+      "name": "campus_tongzhou",
+      "value": "通州校区"
+    },
+    {
+      "name": "campus_zhonglan",
+      "value": "中蓝校区"
+    },
+    {
+      "name": "feedback_contact",
+      "value": "个人信息（非必填）"
+    },
+    {
+      "name": "feedback_contact_uid",
+      "value": "学号"
+    },
+    {
+      "name": "feedback_contact_uid_placeholder",
+      "value": "请输入学号"
+    },
+    {
+      "name": "feedback_contact_name",
+      "value": "姓名"
+    },
+    {
+      "name": "feedback_contact_name_placeholder",
+      "value": "请输入姓名"
+    },
+    {
+      "name": "feedback_contact_contact",
+      "value": "联系方式"
+    },
+    {
+      "name": "feedback_contact_contact_placeholder",
+      "value": "请输入联系方式（手机、微信等）"
+    },
+    {
+      "name": "feedback_content",
+      "value": "反馈内容"
+    },
+    {
+      "name": "feedback_content_campus",
+      "value": "所在校区"
+    },
+    {
+      "name": "feedback_content_campus_placeholder",
+      "value": "请选择所在校区"
+    },
+    {
+      "name": "feedback_content_placeholder",
+      "value": "请在此详细描述你要反馈的内容。"
+    },
+    {
+      "name": "feedback_draft",
+      "value": "保存草稿"
+    },
+    {
+      "name": "feedback_submit",
+      "value": "提交反馈"
+    },
+    {
+      "name": "feedback_submit_failed",
+      "value": "提交反馈失败"
+    },
+    {
+      "name": "feedback_submit_too_frequent",
+      "value": "请求过于频繁，请稍后再试"
+    },
+    {
+      "name": "feedback_campus_choose",
+      "value": "选择校区"
+    },
+    {
+      "name": "feedback_campus_choose_unselected",
+      "value": "未选择"
+    },
+    {
+      "name": "feedback_campus_choose_cancel",
+      "value": "取消"
+    },
+    {
+      "name": "feedback_campus_choose_confirm",
+      "value": "确认"
+    },
+    {
+      "name": "feedback_draft_saved",
+      "value": "草稿已保存"
+    },
+    {
+      "name": "feedback_submit_confirm",
+      "value": "确定要提交吗？"
+    },
+    {
+      "name": "dialog_confirm_title",
+      "value": "注意"
+    },
+    {
+      "name": "dialog_confirm_cancel",
+      "value": "取消"
+    },
+    {
+      "name": "dialog_confirm_confirm",
+      "value": "确认"
+    },
+    {
+      "name": "dialog_loading",
+      "value": "加载中..."
     }
   ]
 }

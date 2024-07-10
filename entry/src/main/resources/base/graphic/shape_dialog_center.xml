@@ -2,6 +2,6 @@
 <shape
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:shape="rectangle">
-    <corners ohos:radius="4vp" />
-    <solid ohos:color="$color:brand_focus" />
+    <solid ohos:color="#ffffff" />
+    <corners ohos:radius="16vp" />
 </shape>

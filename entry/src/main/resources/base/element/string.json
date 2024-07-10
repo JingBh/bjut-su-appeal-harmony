@@ -147,6 +147,138 @@
     {
       "name": "list_expand",
       "value": "Show more"
+    },
+    {
+      "name": "list_search",
+      "value": "Search..."
+    },
+    {
+      "name": "questions_campus",
+      "value": "Campus: "
+    },
+    {
+      "name": "questions_campus_short",
+      "value": "Campus"
+    },
+    {
+      "name": "questions_question",
+      "value": "Feedback"
+    },
+    {
+      "name": "questions_answer",
+      "value": "Answer"
+    },
+    {
+      "name": "campus_main",
+      "value": "Pingleyuan"
+    },
+    {
+      "name": "campus_tongzhou",
+      "value": "Tongzhou"
+    },
+    {
+      "name": "campus_zhonglan",
+      "value": "Zhonglan"
+    },
+    {
+      "name": "feedback_contact",
+      "value": "Personal Information (Optional)"
+    },
+    {
+      "name": "feedback_contact_uid",
+      "value": "Student ID"
+    },
+    {
+      "name": "feedback_contact_uid_placeholder",
+      "value": "Please input student ID"
+    },
+    {
+      "name": "feedback_contact_name",
+      "value": "Name"
+    },
+    {
+      "name": "feedback_contact_name_placeholder",
+      "value": "Please input name"
+    },
+    {
+      "name": "feedback_contact_contact",
+      "value": "Contact"
+    },
+    {
+      "name": "feedback_contact_contact_placeholder",
+      "value": "Please input contact (phone, WeChat, etc.)"
+    },
+    {
+      "name": "feedback_content",
+      "value": "Feedback Content"
+    },
+    {
+      "name": "feedback_content_campus",
+      "value": "Campus"
+    },
+    {
+      "name": "feedback_content_campus_placeholder",
+      "value": "Please choose your campus"
+    },
+    {
+      "name": "feedback_content_placeholder",
+      "value": "Please provide a detailed description of your feedback here."
+    },
+    {
+      "name": "feedback_draft",
+      "value": "Draft"
+    },
+    {
+      "name": "feedback_submit",
+      "value": "Submit"
+    },
+    {
+      "name": "feedback_submit_failed",
+      "value": "Failed to submit feedback"
+    },
+    {
+      "name": "feedback_submit_too_frequent",
+      "value": "Request too frequent, please try again later"
+    },
+    {
+      "name": "feedback_campus_choose",
+      "value": "Choose Campus"
+    },
+    {
+      "name": "feedback_campus_choose_unselected",
+      "value": "Not Selected"
+    },
+    {
+      "name": "feedback_campus_choose_cancel",
+      "value": "Cancel"
+    },
+    {
+      "name": "feedback_campus_choose_confirm",
+      "value": "Confirm"
+    },
+    {
+      "name": "feedback_draft_saved",
+      "value": "Draft saved"
+    },
+    {
+      "name": "feedback_submit_confirm",
+      "value": "Are you sure you want to submit?"
+    },
+    {
+      "name": "dialog_confirm_title",
+      "value": "Notice"
+    },
+    {
+      "name": "dialog_confirm_cancel",
+      "value": "Cancel"
+    },
+    {
+      "name": "dialog_confirm_confirm",
+      "value": "Confirm"
+    },
+    {
+      "name": "dialog_loading",
+      "value": "加载中..."
     }
   ]
 }

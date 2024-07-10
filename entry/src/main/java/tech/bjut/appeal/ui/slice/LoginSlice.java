@@ -7,7 +7,6 @@ import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
 import ohos.agp.components.Text;
 import ohos.agp.components.TextField;
-import ohos.agp.window.dialog.ToastDialog;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 import okhttp3.Call;
@@ -20,6 +19,7 @@ import tech.bjut.appeal.data.model.TokenResponseDto;
 import tech.bjut.appeal.data.service.WebService;
 import tech.bjut.appeal.data.util.TokenUtil;
 import tech.bjut.appeal.ui.ability.MainAbility;
+import tech.bjut.appeal.ui.util.DialogUtil;
 
 import java.io.IOException;
 
@@ -81,7 +81,7 @@ public class LoginSlice extends AbilitySlice {
                             errorMessageRes = ResourceTable.String_login_fail_401;
                         } else if (response.code() == 429) {
                             errorMessageRes = ResourceTable.String_login_fail_429;
-                        } else if (response.code() != 200 || response.body() == null) {
+                        } else if (!response.isSuccessful() || response.body() == null) {
                             errorMessageRes = ResourceTable.String_login_fail;
                         } else {
                             Moshi moshi = new Moshi.Builder().build();
@@ -90,14 +90,12 @@ public class LoginSlice extends AbilitySlice {
                             if (tokenResponse == null) {
                                 errorMessageRes = ResourceTable.String_login_fail;
                             } else {
-                                TokenUtil.setToken(LoginSlice.this, tokenResponse);
+                                TokenUtil.setToken(tokenResponse);
                                 LoginSlice.this.getUITaskDispatcher().syncDispatch(() -> {
                                     loading.setVisibility(Component.HIDE);
                                     buttonText.setText(ResourceTable.String_login_button);
 
-                                    new ToastDialog(LoginSlice.this)
-                                        .setText(LoginSlice.this.getString(ResourceTable.String_login_success))
-                                        .show();
+                                    DialogUtil.showToast(LoginSlice.this, ResourceTable.String_login_success);
 
                                     terminate();
                                 });
@@ -121,12 +119,14 @@ public class LoginSlice extends AbilitySlice {
 
     @Override
     protected void onActive() {
+        super.onActive();
         MainAbility ability = (MainAbility) this.getAbility();
         ability.setCurrentSlice(this);
     }
 
     @Override
     protected void onStop() {
+        super.onStop();
         if (request != null) {
             request.cancel();
         }

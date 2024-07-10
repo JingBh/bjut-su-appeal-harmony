@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:question_item"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:top_margin="16vp"
+    ohos:background_element="$graphic:shape_list_item">
+
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical"
+        ohos:padding="16vp">
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:alignment="vertical_center"
+            ohos:orientation="horizontal">
+
+            <Component
+                ohos:height="20vp"
+                ohos:width="4vp"
+                ohos:start_margin="0vp"
+                ohos:end_margin="8vp"
+                ohos:background_element="$graphic:shape_mark" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:text="$string:questions_question"
+                ohos:text_size="16fp"
+                ohos:text_weight="600"
+                ohos:text_color="$color:gray_900"
+                ohos:multiple_lines="true" />
+
+            <Text
+                ohos:id="$+id:question_item_question_time"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:text_size="12fp"
+                ohos:text_color="$color:gray_500"
+                ohos:start_margin="8vp"
+                ohos:end_margin="0vp" />
+
+        </DirectionalLayout>
+
+        <Text
+            ohos:id="$+id:question_item_question_content"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:text_size="14fp"
+            ohos:line_height_num="1.2"
+            ohos:text_color="$color:gray_600"
+            ohos:multiple_lines="true"
+            ohos:top_margin="12vp" />
+
+        <Image
+            ohos:id="$+id:question_item_question_image"
+            ohos:visibility="hide"
+            ohos:height="128vp"
+            ohos:width="128vp"
+            ohos:image_src="$media:image_placeholder"
+            ohos:scale_mode="clip_center"
+            ohos:top_margin="12vp" />
+
+        <Text
+            ohos:id="$+id:question_item_question_campus"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:text="$string:questions_campus"
+            ohos:text_size="12fp"
+            ohos:text_color="$color:gray_500"
+            ohos:top_margin="12vp" />
+
+    </DirectionalLayout>
+
+    <Component
+        ohos:id="$+id:question_item_answer_border"
+        ohos:visibility="hide"
+        ohos:height="1vp"
+        ohos:width="match_parent"
+        ohos:background_element="$color:gray_200" />
+
+    <DirectionalLayout
+        ohos:id="$+id:question_item_answer"
+        ohos:visibility="hide"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="vertical"
+        ohos:padding="16vp">
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:alignment="vertical_center"
+            ohos:orientation="horizontal">
+
+            <Component
+                ohos:height="20vp"
+                ohos:width="4vp"
+                ohos:start_margin="0vp"
+                ohos:end_margin="8vp"
+                ohos:background_element="$graphic:shape_mark" />
+
+            <Text
+                ohos:height="match_content"
+                ohos:width="0vp"
+                ohos:weight="1"
+                ohos:text="$string:questions_answer"
+                ohos:text_size="16fp"
+                ohos:text_weight="600"
+                ohos:text_color="$color:gray_900"
+                ohos:multiple_lines="true" />
+
+            <Text
+                ohos:id="$+id:question_item_answer_time"
+                ohos:height="match_content"
+                ohos:width="match_content"
+                ohos:text_size="12fp"
+                ohos:text_color="$color:gray_500"
+                ohos:start_margin="8vp"
+                ohos:end_margin="0vp" />
+
+        </DirectionalLayout>
+
+        <Text
+            ohos:id="$+id:question_item_answer_content"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:text_size="14fp"
+            ohos:line_height_num="1.2"
+            ohos:text_color="$color:gray_600"
+            ohos:multiple_lines="true"
+            ohos:top_margin="12vp" />
+
+        <Image
+            ohos:id="$+id:question_item_answer_image"
+            ohos:visibility="hide"
+            ohos:height="128vp"
+            ohos:width="128vp"
+            ohos:image_src="$media:image_placeholder"
+            ohos:scale_mode="clip_center"
+            ohos:top_margin="12vp" />
+
+    </DirectionalLayout>
+
+    <Component
+        ohos:id="$+id:question_item_actions_border"
+        ohos:visibility="hide"
+        ohos:height="1vp"
+        ohos:width="match_parent"
+        ohos:background_element="$color:gray_200" />
+
+    <DirectionalLayout
+        ohos:id="$+id:question_item_actions"
+        ohos:visibility="hide"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal"
+        ohos:start_padding="16vp"
+        ohos:end_padding="16vp"
+        ohos:top_padding="12vp"
+        ohos:bottom_padding="12vp"
+        ohos:alignment="end">
+
+
+
+    </DirectionalLayout>
+
+</DirectionalLayout>

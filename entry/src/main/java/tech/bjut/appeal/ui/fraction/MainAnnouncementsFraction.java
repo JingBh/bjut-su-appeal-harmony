@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 
 public class MainAnnouncementsFraction extends Fraction {
 
-    private ListContainer listContainer;
+    private List<ItemData> items;
 
-    private final List<ItemData> items = new ArrayList<>();
+    private ListContainer listContainer;
 
     private String currentCursor = null;
 
@@ -39,8 +39,11 @@ public class MainAnnouncementsFraction extends Fraction {
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         Component component = scatter.parse(ResourceTable.Layout_slice_announcements, container, false);
 
+        items = new ArrayList<>();
+        currentCursor = null;
+        loadFinished = false;
         listContainer = component.findComponentById(ResourceTable.Id_announcements_list);
-        listContainer.setItemProvider(new AnnouncementItemProvider());
+        listContainer.setItemProvider(new ItemProvider());
         listContainer.setScrollListener(() -> {
             if (loading || loadFinished) {
                 return;
@@ -56,7 +59,8 @@ public class MainAnnouncementsFraction extends Fraction {
     }
 
     @Override
-    protected void onComponentDetach() {
+    protected void onInactive() {
+        super.onInactive();
         if (request != null) {
             request.cancel();
         }
@@ -75,6 +79,9 @@ public class MainAnnouncementsFraction extends Fraction {
                     return;
                 }
                 this.getUITaskDispatcher().syncDispatch(() -> {
+                    if (this.getContext() == null) {
+                        return;
+                    }
                     if (data == null) {
                         loadFailed = true;
                     } else {
@@ -127,7 +134,7 @@ public class MainAnnouncementsFraction extends Fraction {
         }
     }
 
-    private class AnnouncementItemProvider extends BaseItemProvider {
+    private class ItemProvider extends BaseItemProvider {
         @Override
         public int getCount() {
             return items.size() + 1;
@@ -151,9 +158,14 @@ public class MainAnnouncementsFraction extends Fraction {
 
         @Override
         public Component getComponent(int i, Component convertComponent, ComponentContainer componentContainer) {
-            if (i == items.size()) {
-                Text component = (Text) LayoutScatter.getInstance(getContext())
-                    .parse(ResourceTable.Layout_component_list_hint, componentContainer, false);
+            if (getItemId(i) == -1) {
+                final Text component;
+                if (convertComponent != null && convertComponent.getId() == ResourceTable.Id_questions_filter) {
+                    component = (Text) convertComponent;
+                } else {
+                    component = (Text) LayoutScatter.getInstance(getApplicationContext())
+                            .parse(ResourceTable.Layout_component_list_hint, componentContainer, false);
+                }
                 if (loading) {
                     component.setText(ResourceTable.String_list_loading);
                 } else if (loadFinished) {
@@ -169,11 +181,11 @@ public class MainAnnouncementsFraction extends Fraction {
             ItemData item = items.get(i);
             Announcement announcement = item.getAnnouncement();
             final Component component;
-            if (!(convertComponent instanceof ComponentContainer)) {
-                component = LayoutScatter.getInstance(getContext())
-                    .parse(ResourceTable.Layout_component_announcement_item, componentContainer, false);
-            } else {
+            if (convertComponent != null && convertComponent.getId() == ResourceTable.Id_announcement_item) {
                 component = convertComponent;
+            } else {
+                component = LayoutScatter.getInstance(getApplicationContext())
+                    .parse(ResourceTable.Layout_component_announcement_item, componentContainer, false);
             }
 
             Text title = component.findComponentById(ResourceTable.Id_announcement_item_title);
@@ -216,7 +228,7 @@ public class MainAnnouncementsFraction extends Fraction {
             List<Attachment> imageAttachments = announcement.getImageAttachments();
             if (imageAttachments.size() > 0) {
                 getMainTaskDispatcher().asyncDispatch(() -> {
-                    WebService.getAttachment(getCacheDir(), imageAttachments.get(0).getId(), stream -> {
+                    WebService.getAttachment(imageAttachments.get(0).getId(), stream -> {
                         if (stream != null) {
                             ImageSource imageSource = ImageSource.create(stream, new ImageSource.SourceOptions());
                             if (getUITaskDispatcher() != null) {

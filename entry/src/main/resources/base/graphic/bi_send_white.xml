@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vector xmlns:ohos="http://schemas.huawei.com/res/ohos" ohos:width="16vp" ohos:height="16vp" ohos:viewportWidth="16" ohos:viewportHeight="16">
+  <path ohos:pathData="M15.854,0.146a0.5,0.5 0,0 1,0.11 0.54l-5.819,14.547a0.75,0.75 0,0 1,-1.329 0.124l-3.178,-4.995L0.643,7.184a0.75,0.75 0,0 1,0.124 -1.33L15.314,0.037a0.5,0.5 0,0 1,0.54 0.11ZM6.636,10.07l2.761,4.338L14.13,2.576zM13.423,1.869L1.591,6.602l4.339,2.76z" ohos:fillColor="#ffffff"></path>
+</vector>

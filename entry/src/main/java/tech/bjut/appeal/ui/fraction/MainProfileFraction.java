@@ -10,6 +10,7 @@ import tech.bjut.appeal.ResourceTable;
 import tech.bjut.appeal.data.service.WebService;
 import tech.bjut.appeal.data.util.TokenUtil;
 import tech.bjut.appeal.ui.ability.MainAbility;
+import tech.bjut.appeal.ui.slice.HistorySlice;
 import tech.bjut.appeal.ui.slice.LoginSlice;
 import tech.bjut.appeal.ui.util.AboutUtil;
 
@@ -44,7 +45,7 @@ public class MainProfileFraction extends Fraction {
         loginButton.setClickedListener(comp -> {
             MainAbility ability = (MainAbility) getFractionAbility();
             AbilitySlice slice = ability.getCurrentSlice();
-            slice.presentForResult(new LoginSlice(), new Intent(), 1);
+            slice.present(new LoginSlice(), new Intent());
             slice.getLifecycle().addObserver(new LifecycleObserver() {
                 @Override
                 public void onForeground(Intent intent) {
@@ -55,13 +56,8 @@ public class MainProfileFraction extends Fraction {
         });
 
         logoutButton.setClickedListener(comp -> {
-            TokenUtil.deleteToken(MainProfileFraction.this);
+            TokenUtil.deleteToken();
             loadUser();
-        });
-
-        feedbacksButton.setClickedListener(comp -> {
-            MainAbility ability = (MainAbility) getFractionAbility();
-            // TODO
         });
 
         loadUser();
@@ -81,7 +77,8 @@ public class MainProfileFraction extends Fraction {
     }
 
     @Override
-    protected void onComponentDetach() {
+    protected void onInactive() {
+        super.onInactive();
         if (userRequest != null) {
             userRequest.cancel();
         }
@@ -91,9 +88,8 @@ public class MainProfileFraction extends Fraction {
     }
 
     private void loadUser() {
-        final String token = TokenUtil.getToken(MainProfileFraction.this);
-        // if token not present
-        if (token == null) {
+        if (TokenUtil.getToken() == null) {
+            // if token not present
             name.setText(ResourceTable.String_profile_anonymous);
             uid.setVisibility(Component.HIDE);
             loginButton.setVisibility(Component.VISIBLE);
@@ -105,7 +101,7 @@ public class MainProfileFraction extends Fraction {
             if (userRequest != null) {
                 userRequest.cancel();
             }
-            userRequest = WebService.getUser(token, user -> {
+            userRequest = WebService.getUser(user -> {
                 if (this.getUITaskDispatcher() == null) {
                     return;
                 }
@@ -137,13 +133,18 @@ public class MainProfileFraction extends Fraction {
             if (userCountRequest != null) {
                 userCountRequest.cancel();
             }
-            userCountRequest = WebService.getUserCount(TokenUtil.getToken(MainProfileFraction.this), userCount -> {
+            userCountRequest = WebService.getUserCount(userCount -> {
                 if (this.getUITaskDispatcher() == null) {
                     return;
                 }
                 this.getUITaskDispatcher().syncDispatch(() -> {
                     if (userCount != null) {
                         container.setClickable(true);
+                        container.setClickedListener(comp -> {
+                            MainAbility ability = (MainAbility) getFractionAbility();
+                            AbilitySlice slice = ability.getCurrentSlice();
+                            slice.present(new HistorySlice(), new Intent());
+                        });
                         count.setText(String.valueOf(userCount.getHistory()));
                         linkIcon.setVisibility(Component.VISIBLE);
                     } else {
