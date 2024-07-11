@@ -3,17 +3,6 @@ apply plugin: 'com.huawei.ohos.app'
 
 //For instructions on signature configuration, see https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/ide_debug_device-0000001053822404-V3#section1112183053510
 ohos {
-    signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\jingb\\.ohos\\config\\auto_debug_bjut-su-appeal-harmony_tech.bjut.appeal_80086000142744710.p12')
-            storePassword '0000001B51A35FEC69BED09AB589366927865DF141430C296E82D2355B0BC36604748173E90E63951CEF7D'
-            keyAlias = 'debugKey'
-            keyPassword '0000001BFF72D05241CB4E45C5CB5F13DC795DFCD1639B7A7A45A3F685CAB6BBC0EF6CA3F1DABE98176F72'
-            signAlg = 'SHA256withECDSA'
-            profile file('C:\\Users\\jingb\\.ohos\\config\\auto_debug_bjut-su-appeal-harmony_tech.bjut.appeal_80086000142744710.p7b')
-            certpath file('C:\\Users\\jingb\\.ohos\\config\\auto_debug_bjut-su-appeal-harmony_tech.bjut.appeal_80086000142744710.cer')
-        }
-    }
     compileSdkVersion 7
 }
 
